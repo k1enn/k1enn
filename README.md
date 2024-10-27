@@ -5,7 +5,7 @@
 
 - 🌱 I’m currently learning **Backend**
 
-- 👨‍💻 All of my projects are available at [https://github.com/k1enn?tab=repositories](https://github.com/k1enn?tab=repositories)
+- 👨‍💻 All of my projects are available at [Github](https://github.com/k1enn?tab=repositories)
 
 - 💬 Ask me about **C#, ASP.NET, HTML, CSS, Javascript**
 
