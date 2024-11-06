@@ -1,5 +1,5 @@
 <h1 align="left">Hi 👋, Welcome to my Github<br>I'm Trung Kien</h1>
-<p align="left">A passionate educator, programmer, full-stack developer from Vietnam. Here, you’ll find free resources, project-based examples, and beginner-friendly guides aimed at building strong technical foundations. My goal is to support students, particularly those at HUFLIT, and anyone eager to learn—no cost, just open access to quality learning.</p>
+<p align="left">A passionate educator, programmer, full-stack developer from Vietnam. Here, you’ll find free resources, project-based examples, and beginner-friendly guides aimed at building strong technical foundations. My goal is to support students, particularly those at HUFLIT, and anyone eager to learn—no cost, just open access to quality learning ./.</p>
 
 Some of my project:
 - [DSA](https://github.com/k1enn/DSA)
