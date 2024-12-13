@@ -4,7 +4,6 @@
 Some of my project:
 - [DSA](https://github.com/k1enn/DSA)
 - [Web_Programming](https://github.com/k1enn/Web_Programming)
-- [Nhap-mon-lap-trinh](https://github.com/k1enn/Nhap-mon-lap-trinh)
 - [Coffe Shop Web App](https://github.com/k1enn/Ca-Phe-Boys)
 
 
