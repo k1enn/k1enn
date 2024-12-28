@@ -9,154 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <style>
-
-        .inter-title {
-            font-family: "Inter", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 700; /* Example: Bold weight */
-            font-style: normal;
-        }
-
-        .inter-body {
-            font-family: "Inter", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 400; /* Example: Regular weight */
-            font-style: normal;
-        }
-
-
-        header {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #1c1c1c;            
-        }
-
-        @media screen and (max-width: 393px) and (max-height: 852px) {
-            #connect {
-                padding: 4rem;
-            }
-            header {
-                padding: 3rem;
-            }
-            .lead {
-                padding: 0 20px;
-            }
-        }
-
-
-        /* Full-page overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #1c1c1c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        .overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .overlay h1 {
-            color: white;
-            font-size: 3rem;
-            text-align: center;
-            animation: fadeInOut 3s forwards;
-        }
-
-        @keyframes fadeInOut {
-            0% {
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            80% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-
-        /* Main content animations */
-        .animate-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .animate-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .swipe-left {
-            transform: translateX(-50px);
-            transition: transform 1s ease;
-        }
-
-        .swipe-right {
-            transform: translateX(50px);
-            transition: transform 1s ease;
-        }
-
-        .swipe-left.visible,
-        .swipe-right.visible {
-            transform: translateX(0);
-        }
-
-        .icon-size {
-            width: 40px;
-            height: 40px;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-        
-        main {
-        background-color: #181818;
-        color: white; /* Optional: Ensures text is readable */
-        padding: 2rem; /* Adds some padding inside the main content */
-        margin: 0; /* Removes any default margin */
-       }
-    
-       #projects, #about, #connect{
-        margin: 2rem;
-       }
-
-       #connect {
-        padding: 2rem;
-       }
-
-       .btn.btn-custom {
-        color: white;
-        background-color: #060606;
-       }
-
-       .btn.btn-custom:hover {
-        background-color: #444242;
-       }
-
-       .text-center {
-        padding-bottom: 3vh;
-       }
-
-       .lead {
-        padding: 0 15px;
-       }
-    </style>
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -182,6 +35,9 @@
                 <a href="https://linkedin.com/in/k1enn" target="_blank">
                     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" class="icon-size">
                 </a>
+                <a href="https://www.github.com/k1enn" target="_blank"></a>
+                    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="YouTube" class="icon-size">
+                </a>
                 <a href="https://www.youtube.com/@iamk1en" target="_blank">
                     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="YouTube" class="icon-size">
                 </a>
@@ -191,15 +47,13 @@
                 <a href="https://www.leetcode.com/iamk1en" target="_blank">
                     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="LeetCode" class="icon-size">
                 </a>
-                <a href="https://discord.gg/7J8k2vyMkk" target="_blank">
+                <a href="https://discord.gg/sincos" target="_blank">
                     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="Discord" class="icon-size">
                 </a>
                 <a href="https://fb.com/imnotk1en" target="blank">
                     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="imnotk1en" height="30" width="40" />
                 </a>
-                <a href="https://instagram.com/barbie._.thrift" target="blank">
-                    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="barbie._.thrift" height="30" width="40" />
-                </a>
+               
             </div>
         </section>
 
