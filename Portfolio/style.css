@@ -163,6 +163,19 @@ section h2:after {
     filter: grayscale(0%);
 }
 
+/* Add media query for laptop view */
+@media screen and (min-width: 1366px) {
+    .icon-size {
+        width: 64px;
+        height: 64px;
+    }
+    
+    /* Increase gap between social icons */
+    #connect .d-flex.gap-2 {
+        gap: 1rem !important; /* Approximately 16px, which is 4px more than the original */
+    }
+}
+
 /* Animations and transitions */
 @keyframes fadeInOut {
     0% { opacity: 0; }
