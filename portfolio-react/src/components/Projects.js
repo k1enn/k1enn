@@ -1,52 +1,22 @@
 import React from 'react';
-import { Box, Container, SimpleGrid, Heading } from '@chakra-ui/react';
+import { Box, Container, SimpleGrid, Heading, Button, Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
+import projectsData from '../projects.json';
 
 const MotionHeading = motion(Heading);
-const GITHUB_IMAGE_URL = 'https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/';
+const MotionBox = motion(Box);
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'software-engineer-notes',
-      description: 'Sharing notes for CS major.',
-      image: `${GITHUB_IMAGE_URL}software-engineer-note.png`,
-      link: 'https://github.com/k1enn/software-engineer-notes',
-      direction: 'left',
-      tags: ['Documentation', 'Educational', 'CS']
-    },
-    {
-      title: 'BoysCoffee',
-      description: 'A web application for browsing, selecting, and ordering beverages from anywhere.',
-      image: `${GITHUB_IMAGE_URL}web_1.png`,
-      link: 'https://github.com/k1enn/Ca-Phe-Boys',
-      direction: 'left',
-      tags: ['Web App', 'E-Commerce', 'Fullstack']
-    },
-    {
-      title: 'barbie-thrift-tool',
-      description: 'A responsive tool for documenting apparel details with dynamic output generation.',
-      image: `${GITHUB_IMAGE_URL}barbie-thrift-tools.png`,
-      link: 'https://github.com/k1enn/Outfit-Template-Maker',
-      direction: 'right',
-      tags: ['Tool', 'Frontend', 'Responsive']
-    },
-    {
-      title: 'elsa-speak-clone',
-      description: 'A comprehensive Android application designed to help users learn English through interactive lessons, pronunciation practice, quizzes, and more.',
-      image: `${GITHUB_IMAGE_URL}elsa-speak-clone.png`,
-      link: 'https://github.com/k1enn/elsa-speak-clone',
-      direction: 'right',
-      tags: ['Mobile', 'Android', 'Education']
-    },
-  ];
+  // Only show first 2 projects on homepage
+  const featuredProjects = projectsData.slice(0, 2);
 
   return (
-    <Box id="projects"       p={["3rem 1rem", "5rem 2rem"]}
+    <Box id="projects" p={["3rem 1rem", "5rem 2rem"]}
     position="relative"
     bg="rgba(0, 0, 0, 0.02)">
-      <Container maxW="container.xl">
+      <Container maxW="container.lg">
         <MotionHeading
            as="h2"
            fontSize={["2rem", "2.5rem"]}
@@ -77,10 +47,32 @@ const Projects = () => {
         </MotionHeading>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mt={10}>
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <ProjectCard key={index} project={project} direction={project.direction} />
           ))}
         </SimpleGrid>
+        
+        <Flex justifyContent="center" mt={12}>
+          <MotionBox
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <Button
+              as={Link}
+              to="/projects"
+              variant="custom"
+              size="lg"
+              _hover={{
+                transform: "translateY(-3px)",
+                boxShadow: "0 6px 20px rgba(77, 77, 255, 0.4)",
+              }}
+            >
+              View All Projects
+            </Button>
+          </MotionBox>
+        </Flex>
       </Container>
     </Box>
   );

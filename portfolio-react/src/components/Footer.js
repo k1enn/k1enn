@@ -50,7 +50,7 @@ const Footer = () => {
               Built with <Icon as={FaHeart} color="red.400" mx={1} /> using React & Chakra UI
             </MotionText>
             <Text fontSize="sm" color="text.secondary">
-              © {currentYear} Trung Kien. All rights reserved.
+              © {currentYear} Trung Kien. 
             </Text>
           </MotionBox>
         </Flex>

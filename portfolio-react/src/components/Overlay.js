@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Heading } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-
+import { TypeAnimation } from 'react-type-animation';
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
@@ -19,8 +19,8 @@ const Overlay = () => {
       justifyContent="center"
       zIndex="9999"
       initial={{ opacity: 1 }}
-      animate={{ opacity: [0, 1, 1, 0] }}
-      transition={{ duration: 3, times: [0, 0.2, 0.8, 1] }}
+      animate={{ opacity: [1, 1, 0] }}
+      transition={{ duration: 2, times: [0, 0.2, 0.8, 1] }}
     >
       <MotionHeading
         fontSize="3.5rem"
@@ -32,7 +32,11 @@ const Overlay = () => {
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        Hello there
+      <TypeAnimation
+        sequence={['Hello there']}
+        speed={50}
+        repeat={1}
+      />
       </MotionHeading>
     </MotionBox>
   );

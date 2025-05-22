@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Image, Heading, Text, Button, VStack, HStack, Tag, useBreakpointValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-
+import { RiArrowRightLine } from "react-icons/ri"
 const MotionBox = motion(Box);
 
 const ProjectCard = ({ project, direction }) => {
@@ -80,18 +80,21 @@ const ProjectCard = ({ project, direction }) => {
             {project.description}
           </Text>
           <Button
-            variant="custom"
+            variant="outline"
             size={buttonSize}
             as="a"
             href={project.link}
             target="_blank"
             mt={2}
+            color="white.500"
             _hover={{
               transform: "translateY(-3px)",
               boxShadow: "0 6px 20px rgba(77, 77, 255, 0.4)",
+              color: "blue.600",
+              borderColor: "blue.600"
             }}
           >
-            View Project
+            View Project <RiArrowRightLine ml={4} />
           </Button>
         </VStack>
       </Box>

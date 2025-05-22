@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Heading, Text, Icon } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { BsChevronDown } from 'react-icons/bs';
-import AnimatedText from './AnimatedText';
+import HoverAnimatedText from './HoverAnimatedText';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -49,7 +49,7 @@ const Header = () => {
           bgGradient="linear(90deg, brand.primary, #9999ff)"
           bgClip="text"
         >
-          <AnimatedText text="I'm Trung Kien" delay={1} />
+          <HoverAnimatedText text="I'm Trung Kien" delay={1} />
         </Heading>
         <MotionText
           fontSize={["1rem", "1.2rem"]}

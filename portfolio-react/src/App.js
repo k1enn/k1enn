@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from "@chakra-ui/react";
-import Overlay from './components/Overlay';
-import Header from './components/Header';
-import Connect from './components/Connect';
-import Projects from './components/Projects';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
+import { Routes, Route } from 'react-router-dom';
 import Loading from './components/Loading';
-import ScrollToTop from './components/ScrollToTop';
+import ProjectPage from './screens/ProjectPage';
+import HomePage from './screens/HomePage';
 
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
@@ -35,7 +30,7 @@ function App() {
     if (!isLoading) {
       const timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 3000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [isLoading]);
@@ -54,15 +49,10 @@ function App() {
   }
 
   return (
-    <Box>
-      <Navigation />
-      <ScrollToTop />
-      {showOverlay && <Overlay />}
-      <Header />
-      <Connect />
-      <Projects />
-      <Footer />
-    </Box>
+    <Routes>
+      <Route path="/" element={<HomePage showOverlay={showOverlay} />} />
+      <Route path="/projects" element={<ProjectPage />} />
+    </Routes>
   );
 }
 
