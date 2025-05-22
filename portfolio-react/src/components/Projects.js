@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 
 const MotionHeading = motion(Heading);
+const GITHUB_IMAGE_URL = 'https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/';
 
 const Projects = () => {
   const projects = [
     {
       title: 'software-engineer-notes',
       description: 'Sharing notes for CS major.',
-      image: '/images/software-engineer-note.png',
+      image: `${GITHUB_IMAGE_URL}software-engineer-note.png`,
       link: 'https://github.com/k1enn/software-engineer-notes',
       direction: 'left',
       tags: ['Documentation', 'Educational', 'CS']
@@ -18,7 +19,7 @@ const Projects = () => {
     {
       title: 'BoysCoffee',
       description: 'A web application for browsing, selecting, and ordering beverages from anywhere.',
-      image: '/images/web_1.png',
+      image: `${GITHUB_IMAGE_URL}web_1.png`,
       link: 'https://github.com/k1enn/Ca-Phe-Boys',
       direction: 'left',
       tags: ['Web App', 'E-Commerce', 'Fullstack']
@@ -26,7 +27,7 @@ const Projects = () => {
     {
       title: 'barbie-thrift-tool',
       description: 'A responsive tool for documenting apparel details with dynamic output generation.',
-      image: '/images/barbie-thrift-tools.png',
+      image: `${GITHUB_IMAGE_URL}barbie-thrift-tools.png`,
       link: 'https://github.com/k1enn/Outfit-Template-Maker',
       direction: 'right',
       tags: ['Tool', 'Frontend', 'Responsive']
@@ -34,7 +35,7 @@ const Projects = () => {
     {
       title: 'elsa-speak-clone',
       description: 'A comprehensive Android application designed to help users learn English through interactive lessons, pronunciation practice, quizzes, and more.',
-      image: '/images/elsa-speak-clone.png',
+      image: `${GITHUB_IMAGE_URL}elsa-speak-clone.png`,
       link: 'https://github.com/k1enn/elsa-speak-clone',
       direction: 'right',
       tags: ['Mobile', 'Android', 'Education']

@@ -2,7 +2,7 @@
   "name": "portfolio-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://k1enn.github.io/k1enn",
+  "homepage": "https://k1en.site",
   "dependencies": {
     "@chakra-ui/react": "^2.10.8",
     "@chakra-ui/theme": "^3.4.6",
@@ -17,12 +17,13 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
+    "react-router-dom": "^7.6.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b main -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
