@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react';
-import { Box, Container, SimpleGrid, Heading, Button, Flex } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import ProjectCard from '../components/ProjectCard';
-import projectsData from '../projects.json';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
+// Create this just in case my projects too long
+import React, { useEffect } from "react";
+import {
+  Box,
+  Container,
+  SimpleGrid,
+  Heading,
+  Button,
+  Flex,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import ProjectCard from "../components/ProjectCard";
+import projectsData from "../projects.json";
+import Footer from "../components/Footer";
+import ScrollToTop from "../components/ScrollToTop";
 
 const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
@@ -19,9 +26,8 @@ const ProjectPage = () => {
 
   return (
     <Box>
-      <Navigation />
       <ScrollToTop />
-      
+
       <Box
         pt="80px" // Account for fixed navbar
         p={["3rem 1rem", "5rem 2rem"]}
@@ -42,14 +48,15 @@ const ProjectPage = () => {
             display="inline-block"
             _after={{
               content: "''",
-              position: 'absolute',
-              left: '20%',
-              transform: 'translateX(-50%)',
-              bottom: '-10px',
-              width: '60px',
-              height: '3px',
-              background: 'linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)',
-              borderRadius: '3px',
+              position: "absolute",
+              left: "20%",
+              transform: "translateX(-50%)",
+              bottom: "-10px",
+              width: "60px",
+              height: "3px",
+              background:
+                "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
+              borderRadius: "3px",
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -60,10 +67,14 @@ const ProjectPage = () => {
 
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mt={10}>
             {projectsData.map((project, index) => (
-              <ProjectCard key={index} project={project} direction={index % 2 === 0 ? 'left' : 'right'} />
+              <ProjectCard
+                key={index}
+                project={project}
+                direction={index % 2 === 0 ? "left" : "right"}
+              />
             ))}
           </SimpleGrid>
-          
+
           <Flex justifyContent="center" mt={12}>
             <MotionBox
               initial={{ opacity: 0, y: 20 }}
@@ -72,10 +83,17 @@ const ProjectPage = () => {
             >
               <Button
                 as={Link}
-                to="/#projects"
-                variant="textLink"
+                to="/"
+                variant="ghost"
                 size="lg"
+                color="blue.400"
+                bg="transparent"
+                border="1px solid transparent"
+                transition="all 0.3s ease"
                 _hover={{
+                  bg: "rgba(77, 77, 255, 0.1)",
+                  boxShadow: "0 0 15px 5px rgba(77, 77, 255, 0.3)",
+                  border: "1px solid rgba(77, 77, 255, 0.3)",
                   transform: "translateY(-3px)",
                 }}
               >
@@ -85,7 +103,7 @@ const ProjectPage = () => {
           </Flex>
         </Container>
       </Box>
-      
+
       <Footer />
     </Box>
   );

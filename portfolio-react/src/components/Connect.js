@@ -64,34 +64,35 @@ const Connect = () => {
       position="relative"
       bg="rgba(0, 0, 0, 0.02)"
     >
-        <Container maxW="container.xl">
-      <MotionHeading
-           as="h2"
-           fontSize={["2rem", "2.5rem"]}
-           mb="2.5rem"
-           textAlign="center"
-           bgGradient="linear(90deg, brand.primary, #9999ff)"
-           bgClip="text"
-           fontWeight="800"
-           position="relative"
-           display="inline-block"
-           _after={{
-             content: "''",
-             position: 'absolute',
-             left: '20%',
-             transform: 'translateX(-100%)',
-             bottom: '-10px',
-             width: '60px',
-             height: '3px',
-             background: 'linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)',
-             borderRadius: '3px',
-           }}
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.6 }}
+        <Container maxW="container.lg">
+        <MotionHeading
+          as="h2"
+          fontSize={["2rem", "2.5rem"]}
+          mb="2.5rem"
+          textAlign="center"
+          bgGradient="linear(90deg, brand.primary, #9999ff)"
+          bgClip="text"
+          fontWeight="800"
+          position="relative"
+          display="inline-block"
+          _after={{
+            content: "''",
+            position: "absolute",
+            left: "20%",
+            transform: "translateX(-50%)",
+            bottom: "-10px",
+            width: "60px",
+            height: "3px",
+            background:
+              "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
+            borderRadius: "3px",
+          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-        Connect with me
+          Connect with me
         </MotionHeading>
         </Container>
 
@@ -123,9 +124,10 @@ const Connect = () => {
               position="relative"
               transition="all 0.3s ease"
               _hover={{
+                transform: "translateY(-3px) scale(1.20)",
+                boxShadow: "0 6px 30px rgba(79, 79, 241, 0.4)",
                 bg: "brand.primary",
                 color: "white",
-                transform: "scale(1.2)",
               }}
               variants={item}
             >

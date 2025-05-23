@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Loading from './components/Loading';
-import ProjectPage from './screens/ProjectPage';
-import HomePage from './screens/HomePage';
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Loading from "./components/Loading";
+import ProjectPage from "./screens/ProjectPage";
+import HomePage from "./screens/HomePage";
 
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
@@ -10,16 +10,16 @@ function App() {
 
   useEffect(() => {
     // Check if document and fonts are loaded
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       setTimeout(() => setIsLoading(false), 800);
     } else {
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         setTimeout(() => setIsLoading(false), 800);
       });
     }
 
     return () => {
-      window.removeEventListener('load', () => {
+      window.removeEventListener("load", () => {
         setIsLoading(false);
       });
     };
@@ -38,9 +38,9 @@ function App() {
   // Prevent scrolling when overlay is visible or loading
   useEffect(() => {
     if (showOverlay || isLoading) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [showOverlay, isLoading]);
 

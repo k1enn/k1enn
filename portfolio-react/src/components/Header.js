@@ -1,14 +1,48 @@
-import React from 'react';
-import { Box, Heading, Text, Icon } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { BsChevronDown } from 'react-icons/bs';
-import HoverAnimatedText from './HoverAnimatedText';
+import React, { useEffect, useState } from "react";
+import { Box, Heading, Text, Icon, Progress, VStack } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { BsChevronDown } from "react-icons/bs";
+import HoverAnimatedText from "./HoverAnimatedText";
 
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
+const MotionProgress = motion(Progress);
 
 const Header = () => {
+  const [progressValue, setProgressValue] = useState(0);
+
+  useEffect(() => {
+    // Calculate progress percentage
+    const startDate = new Date("August 1, 2023").getTime();
+    const endDate = new Date("August 1, 2027").getTime();
+    const currentDate = new Date().getTime();
+
+    const totalDuration = endDate - startDate;
+    const elapsed = currentDate - startDate;
+    const progress = Math.min(
+      Math.max((elapsed / totalDuration) * 100, 0),
+      100
+    );
+
+    // Add 2 second delay before starting animation
+    const animationDelay = setTimeout(() => {
+      // Animate progress loading
+      let currentProgress = 0;
+      const interval = setInterval(() => {
+        if (currentProgress >= progress) {
+          clearInterval(interval);
+        } else {
+          currentProgress += 1;
+          setProgressValue(currentProgress);
+        }
+      }, 50);
+
+      return () => clearInterval(interval);
+    }, 3000);
+
+    return () => clearTimeout(animationDelay);
+  }, []);
+
   return (
     <Box
       id="header"
@@ -24,24 +58,26 @@ const Header = () => {
       backgroundPosition="center"
       _after={{
         content: "''",
-        position: 'absolute',
+        position: "absolute",
         bottom: 0,
         left: 0,
-        width: '100%',
-        height: '150px',
-        background: 'linear-gradient(to top, var(--chakra-colors-bg-primary), transparent)'
+        width: "100%",
+        height: "150px",
+        background:
+          "linear-gradient(to top, var(--chakra-colors-bg-primary), transparent)",
       }}
     >
       <MotionBox
         bg="rgba(18, 18, 18, 0.8)"
-        p="2rem"
+        p={["2rem 1rem", "2rem"]}
+        m={["2rem 2rem", "0rem"]}
         borderRadius="8px"
         boxShadow="0 10px 30px rgba(0, 0, 0, 0.3)"
         maxWidth="600px"
         textAlign="center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
       >
         <Heading
           fontSize={["2.5rem", "3.5rem"]}
@@ -56,12 +92,41 @@ const Header = () => {
           color="text.primary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 0.8 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
         >
           A passionate programmer, and future back-end developer from Vietnam.
         </MotionText>
+
+        {/* Graduation Progress Bar */}
+        <MotionBox
+          mt={6}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.0, duration: 0.5 }}
+        >
+          <VStack spacing={2} align="stretch">
+            <Text fontSize="sm" color="text.secondary" textAlign="left">
+              Road to Graduation
+            </Text>
+            <MotionProgress
+              value={progressValue}
+              size="sm"
+              borderRadius="full"
+              hasStripe
+              isAnimated
+              sx={{
+                "& > div": {
+                  background: "#6a6aff", // Your custom hex color (blue-purple)
+                },
+              }}
+            />
+            <Text fontSize="xs" color="text.secondary" textAlign="right">
+              {progressValue.toFixed(1)}%
+            </Text>
+          </VStack>
+        </MotionBox>
       </MotionBox>
-      
+
       <MotionBox
         position="absolute"
         bottom="50px"
@@ -69,21 +134,33 @@ const Header = () => {
         transform="translateX(-50%)"
         zIndex="5"
         initial={{ opacity: 0 }}
-        animate={{ 
+        animate={{
           opacity: 1,
           y: [0, -20, 0],
         }}
-        transition={{ 
+        transition={{
           delay: 3,
           duration: 2,
           repeat: Infinity,
-          repeatType: "loop"
+          repeatType: "loop",
         }}
       >
-        <Icon as={BsChevronDown} w={8} h={8} color="text.primary" />
+        <Icon
+          as={BsChevronDown}
+          w={8}
+          h={8}
+          color="text.primary"
+          cursor="pointer"
+          onClick={() => {
+            window.scrollTo({
+              top: window.innerHeight - 28,
+              behavior: "smooth",
+            });
+          }}
+        />
       </MotionBox>
     </Box>
   );
 };
 
-export default Header; 
+export default Header;

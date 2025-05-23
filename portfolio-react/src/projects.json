@@ -2,7 +2,7 @@
   {
     "title": "software-engineer-notes",
     "description": "Sharing notes for CS major.",
-    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/software-engineer-note.png",
+    "image": "./images/software-engineer-note.png",
     "link": "https://github.com/k1enn/software-engineer-notes",
     "direction": "left",
     "tags": ["Documentation", "Educational", "CS"]
@@ -10,7 +10,7 @@
   {
     "title": "BoysCoffee",
     "description": "A web application for browsing, selecting, and ordering beverages from anywhere.",
-    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/web_1.png",
+    "image": "./images/web_1.png",
     "link": "https://github.com/k1enn/Ca-Phe-Boys",
     "direction": "left",
     "tags": ["Web App", "E-Commerce", "Fullstack"]
@@ -21,7 +21,7 @@
     "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/barbie-thrift-tools.png",
     "link": "https://github.com/k1enn/Outfit-Template-Maker",
     "direction": "right",
-    "tags": ["Tool", "Frontend", "Responsive"]
+    "tags": ["Tool", "Frontend", "Responsive", "Native JS"]
   },
   {
     "title": "elsa-speak-clone",
@@ -29,6 +29,6 @@
     "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/elsa-speak-clone.png",
     "link": "https://github.com/k1enn/elsa-speak-clone",
     "direction": "right",
-    "tags": ["Mobile", "Android", "Education"]
+    "tags": ["Mobile", "Android", "Education", "AI Agent"]
   }
 ]

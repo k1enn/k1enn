@@ -1,13 +1,23 @@
-import React from 'react';
-import { Box, Image, Heading, Text, Button, VStack, HStack, Tag, useBreakpointValue } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { RiArrowRightLine } from "react-icons/ri"
+import React from "react";
+import {
+  Box,
+  Image,
+  Heading,
+  Text,
+  Button,
+  VStack,
+  HStack,
+  Tag,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { RiArrowRightLine } from "react-icons/ri";
 const MotionBox = motion(Box);
 
 const ProjectCard = ({ project, direction }) => {
-  const animationDirection = direction === 'left' ? -50 : 50;
-  const buttonSize = useBreakpointValue({ base: 'sm', md: 'md' });
-  
+  const animationDirection = direction === "left" ? -50 : 50;
+  const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
+
   return (
     <MotionBox
       initial={{ opacity: 0, x: animationDirection }}
@@ -46,11 +56,7 @@ const ProjectCard = ({ project, direction }) => {
             _groupHover={{ transform: "scale(1.05)" }}
           />
         </Box>
-        <VStack
-          spacing={3}
-          align="flex-start"
-          p={5}
-        >
+        <VStack spacing={3} align="flex-start" p={5}>
           <Heading
             as="h3"
             fontSize={["xl", "2xl"]}
@@ -59,14 +65,14 @@ const ProjectCard = ({ project, direction }) => {
           >
             {project.title}
           </Heading>
-          
+
           {project.tags && (
             <HStack spacing={2} flexWrap="wrap" mt={1}>
               {project.tags.map((tag, idx) => (
-                <Tag 
-                  key={idx} 
-                  size="md" 
-                  colorScheme="blue" 
+                <Tag
+                  key={idx}
+                  size="md"
+                  colorScheme="dark-blue"
                   variant="subtle"
                   mb={1}
                 >
@@ -75,7 +81,7 @@ const ProjectCard = ({ project, direction }) => {
               ))}
             </HStack>
           )}
-          
+
           <Text color="text.secondary" fontSize={["sm", "md"]}>
             {project.description}
           </Text>
@@ -88,10 +94,10 @@ const ProjectCard = ({ project, direction }) => {
             mt={2}
             color="white.500"
             _hover={{
-              transform: "translateY(-3px)",
+              transform: "translateY(-3px) scale(1.05)",
               boxShadow: "0 6px 20px rgba(77, 77, 255, 0.4)",
               color: "blue.600",
-              borderColor: "blue.600"
+              borderColor: "blue.600",
             }}
           >
             View Project <RiArrowRightLine ml={4} />
@@ -102,4 +108,4 @@ const ProjectCard = ({ project, direction }) => {
   );
 };
 
-export default ProjectCard; 
+export default ProjectCard;

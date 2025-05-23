@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Spinner } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { Box, Spinner } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 
@@ -20,12 +20,12 @@ const Loading = () => {
     >
       <MotionBox
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ 
-          opacity: 1, 
+        animate={{
+          opacity: 1,
           scale: 1,
           transition: {
-            duration: 0.3
-          }
+            duration: 0.2,
+          },
         }}
       >
         <Spinner
@@ -40,4 +40,4 @@ const Loading = () => {
   );
 };
 
-export default Loading; 
+export default Loading;
