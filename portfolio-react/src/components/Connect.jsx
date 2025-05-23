@@ -1,44 +1,56 @@
-import React from 'react';
-import { Box, Heading, HStack, Link, useBreakpointValue } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaYoutube, FaDiscord, FaFacebook } from 'react-icons/fa';
-import { SiCodeforces, SiLeetcode } from 'react-icons/si';
-import { Container } from '@chakra-ui/react';
+import React from "react";
+import {
+  Box,
+  Heading,
+  HStack,
+  Link,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaYoutube,
+  FaDiscord,
+  FaFacebook,
+} from "react-icons/fa";
+import { SiCodeforces, SiLeetcode } from "react-icons/si";
+import { Container } from "@chakra-ui/react";
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
 const Connect = () => {
   const iconSize = useBreakpointValue({ base: 24, md: 36, lg: 40 });
-  
+
   const socialLinks = [
     {
       url: "https://linkedin.com/in/k1enn",
-      icon: FaLinkedin
+      icon: FaLinkedin,
     },
     {
       url: "https://www.github.com/k1enn",
-      icon: FaGithub
+      icon: FaGithub,
     },
     {
       url: "https://www.youtube.com/@iamk1en",
-      icon: FaYoutube
+      icon: FaYoutube,
     },
     {
       url: "https://codeforces.com/profile/dinhtrungkien",
-      icon: SiCodeforces
+      icon: SiCodeforces,
     },
     {
       url: "https://www.leetcode.com/iamk1en",
-      icon: SiLeetcode
+      icon: SiLeetcode,
     },
     {
-      url: "https://discord.gg/sincos",
-      icon: FaDiscord
+      url: "https://discord.gg/Wk9rmt83v8",
+      icon: FaDiscord,
     },
     {
       url: "https://www.facebook.com/imnotk1en",
-      icon: FaFacebook
-    }
+      icon: FaFacebook,
+    },
   ];
 
   const container = {
@@ -64,7 +76,7 @@ const Connect = () => {
       position="relative"
       bg="rgba(0, 0, 0, 0.02)"
     >
-        <Container maxW="container.lg">
+      <Container maxW="container.lg">
         <MotionHeading
           as="h2"
           fontSize={["2rem", "2.5rem"]}
@@ -94,48 +106,48 @@ const Connect = () => {
         >
           Connect with me
         </MotionHeading>
-        </Container>
+      </Container>
 
-        <MotionBox
-          as={HStack}
-          spacing={[3, 4, 6]}
-          justify="center"
-          wrap="wrap"
-          mt={6}
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          {socialLinks.map((social, index) => (
-            <MotionBox 
-              key={index}
-              as={Link}
-              href={social.url}
-              isExternal
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              w={["60px", "70px"]}
-              h={["60px", "70px"]}
-              borderRadius="50%"
-              bg="rgba(255, 255, 255, 0.1)"
-              color="text.primary"
-              position="relative"
-              transition="all 0.3s ease"
-              _hover={{
-                transform: "translateY(-3px) scale(1.20)",
-                boxShadow: "0 6px 30px rgba(79, 79, 241, 0.4)",
-                bg: "brand.primary",
-                color: "white",
-              }}
-              variants={item}
-            >
-              <Box as={social.icon} size={iconSize} />
-            </MotionBox>
-          ))}
-        </MotionBox>
-      </Box>
+      <MotionBox
+        as={HStack}
+        spacing={[3, 4, 6]}
+        justify="center"
+        wrap="wrap"
+        mt={6}
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        {socialLinks.map((social, index) => (
+          <MotionBox
+            key={index}
+            as={Link}
+            href={social.url}
+            isExternal
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            w={["60px", "70px"]}
+            h={["60px", "70px"]}
+            borderRadius="50%"
+            bg="rgba(255, 255, 255, 0.1)"
+            color="text.primary"
+            position="relative"
+            transition="all 0.3s ease"
+            _hover={{
+              transform: "translateY(-3px) scale(1.20)",
+              boxShadow: "0 6px 30px rgba(79, 79, 241, 0.4)",
+              bg: "brand.primary",
+              color: "white",
+            }}
+            variants={item}
+          >
+            <Box as={social.icon} size={iconSize} />
+          </MotionBox>
+        ))}
+      </MotionBox>
+    </Box>
   );
 };
 
