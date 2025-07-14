@@ -6,15 +6,41 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const [isActive, setActiveSection] = useState("header"); // Set initial active section
+
+  // Function to detect active section
+  const detectActiveSection = () => {
+    const sections = ["header", "technology", "connect", "projects"];
+    let currentSection = "header"; // Default to header
+
+    for (let section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom > 80) {
+          currentSection = section;
+          break;
+        }
+      }
+    }
+    setActiveSection(currentSection);
+  };
 
   useEffect(() => {
+    // Detect active section on initial load
+    detectActiveSection();
+
     const handleScroll = () => {
       if (window.scrollY > 60) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
+
+      // Detect active section on scroll
+      detectActiveSection();
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,6 +58,7 @@ export default function Navbar() {
         behavior: "smooth",
       });
       setIsOpen(false);
+      setActiveSection(sectionId);
     }
   };
 
@@ -52,24 +79,23 @@ export default function Navbar() {
 
         <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive && location.pathname === "/"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
+            {/* Changed from NavLink to regular anchor to avoid conflict */}
+            <a
+              href="#header"
+              className={`nav-link ${isActive === "header" ? "active" : ""}`}
               onClick={(e) => scrollToSection("header", e)}
             >
               Home
-            </NavLink>
+            </a>
           </li>
           {location.pathname === "/" && (
             <>
               <li className="nav-item">
                 <a
                   href="#technology"
-                  className="nav-link"
+                  className={`nav-link ${
+                    isActive === "technology" ? "active" : ""
+                  }`}
                   onClick={(e) => scrollToSection("technology", e)}
                 >
                   Technology
@@ -78,7 +104,9 @@ export default function Navbar() {
               <li className="nav-item">
                 <a
                   href="#connect"
-                  className="nav-link"
+                  className={`nav-link ${
+                    isActive === "connect" ? "active" : ""
+                  }`}
                   onClick={(e) => scrollToSection("connect", e)}
                 >
                   Connect
@@ -89,7 +117,7 @@ export default function Navbar() {
           <li className="nav-item">
             <a
               href="#projects"
-              className="nav-link"
+              className={`nav-link ${isActive === "projects" ? "active" : ""}`}
               onClick={(e) => scrollToSection("projects", e)}
             >
               Projects
