@@ -1,5 +1,29 @@
 [
   {
+    "title": "levents_shop",
+    "description": "A full-stack e-commerce application built with MongoDB, Express.js, React.js, and Node.js featuring comprehensive admin functionality and order management.",
+    "image": "https://github.com/k1enn/levents_shop/raw/master/frontend/public/images/user_view.png",
+    "link": "https://github.com/k1enn/levents_shop",
+    "direction": "left",
+    "tags": ["Fullstack", "E-Commerce"]
+  },
+  {
+    "title": "elsa-speak-clone",
+    "description": "A comprehensive Android application designed to help users learn English through interactive lessons, pronunciation practice, quizzes, and more.",
+    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/elsa-speak-clone.png",
+    "link": "https://github.com/k1enn/elsa-speak-clone",
+    "direction": "right",
+    "tags": ["Mobile", "Android", "Education", "AI Agent"]
+  },
+  {
+    "title": "barbie-thrift-tool",
+    "description": "A responsive tool for documenting apparel details with dynamic output generation.",
+    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/barbie-thrift-tools.png",
+    "link": "https://github.com/k1enn/Outfit-Template-Maker",
+    "direction": "right",
+    "tags": ["Tool", "Frontend", "Responsive", "Native JS"]
+  },
+  {
     "title": "software-engineer-notes",
     "description": "Sharing notes for CS major.",
     "image": "./images/software-engineer-note.png",
@@ -14,21 +38,5 @@
     "link": "https://github.com/k1enn/Ca-Phe-Boys",
     "direction": "left",
     "tags": ["Web App", "E-Commerce", "Fullstack"]
-  },
-  {
-    "title": "barbie-thrift-tool",
-    "description": "A responsive tool for documenting apparel details with dynamic output generation.",
-    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/barbie-thrift-tools.png",
-    "link": "https://github.com/k1enn/Outfit-Template-Maker",
-    "direction": "right",
-    "tags": ["Tool", "Frontend", "Responsive", "Native JS"]
-  },
-  {
-    "title": "elsa-speak-clone",
-    "description": "A comprehensive Android application designed to help users learn English through interactive lessons, pronunciation practice, quizzes, and more.",
-    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/elsa-speak-clone.png",
-    "link": "https://github.com/k1enn/elsa-speak-clone",
-    "direction": "right",
-    "tags": ["Mobile", "Android", "Education", "AI Agent"]
   }
 ]
