@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.jsx";
 import Loading from "../components/Loading.jsx";
-import Overlay from "../components/Overlay.jsx";
 import Header from "../components/Header.jsx";
 import Technology from "../components/Technology.jsx";
 import ScrollToTop from "../components/ScrollToTop.jsx";
@@ -15,8 +14,6 @@ import Footer from "../components/Footer.astro";
 <Layout>
   <Navbar client:load pathname="/" />
   <Loading client:load />
-  <Overlay client:load />
-
   <main>
     <ScrollToTop client:idle />
     <Header client:load />
