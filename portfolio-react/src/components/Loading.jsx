@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
@@ -13,29 +13,41 @@ const Loading = () => {
       width="100%"
       height="100vh"
       display="flex"
+      flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      bg="bg.primary"
+      bg="ink.white"
       zIndex={9999}
+      gap={4}
     >
-      <MotionBox
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{
-          opacity: 1,
-          scale: 1,
-          transition: {
-            duration: 0.2,
-          },
-        }}
+      <Box display="flex" gap={2}>
+        {[0, 1, 2, 3].map((i) => (
+          <MotionBox
+            key={i}
+            w="14px"
+            h="40px"
+            bg="ink.black"
+            animate={{
+              scaleY: [1, 0.4, 1],
+            }}
+            transition={{
+              duration: 0.8,
+              repeat: Infinity,
+              delay: i * 0.12,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </Box>
+      <Text
+        fontFamily="mono"
+        fontSize="xs"
+        textTransform="uppercase"
+        letterSpacing="0.2em"
+        color="ink.black"
       >
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.700"
-          color="brand.primary"
-          size="xl"
-        />
-      </MotionBox>
+        Loading
+      </Text>
     </Box>
   );
 };

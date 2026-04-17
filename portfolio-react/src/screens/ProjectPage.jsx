@@ -1,12 +1,5 @@
-// Create this just in case my projects too long
 import React, { useEffect } from "react";
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  Button,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Container, SimpleGrid, Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { RiArrowLeftLine } from "react-icons/ri";
@@ -20,65 +13,82 @@ import Navbar from "../components/Navbar";
 const MotionBox = motion(Box);
 
 const ProjectPage = () => {
-  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <Box>
+    <Box bg="ink.white" color="ink.black" minH="100vh">
       <Navbar />
       <ScrollToTop />
 
       <Box
         as="main"
-        pt="80px"
-        p={["3rem 1rem", "5rem 2rem"]}
-        position="relative"
-        bg="bg.primary"
-        minHeight="100vh"
+        pt={["96px", "120px"]}
+        pb={["4rem", "6rem"]}
+        px={["1.25rem", "2rem"]}
       >
-        <Container maxW="container.lg">
+        <Container maxW="1280px" p={0}>
           <SectionHeading as="h1" id="all-projects-heading">
             All Projects
           </SectionHeading>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mt={10}>
+          <Flex mb={8} flexWrap="wrap" gap={3}>
+            <Text
+              fontFamily="mono"
+              fontSize="sm"
+              textTransform="uppercase"
+              letterSpacing="0.1em"
+            >
+              Count: {String(projectsData.length).padStart(2, "0")}
+            </Text>
+          </Flex>
+
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[6, 8]}>
             {projectsData.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                direction={index % 2 === 0 ? "left" : "right"}
-              />
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </SimpleGrid>
 
-          <Flex justifyContent="center" mt={12}>
+          <Flex justify="center" mt={[10, 14]}>
             <MotionBox
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
-              <Button
+              <Box
                 as={Link}
                 to="/"
-                size="lg"
-                leftIcon={<RiArrowLeftLine aria-hidden="true" />}
-                color="text.primary"
-                bg="transparent"
-                border="1px solid"
-                borderColor="rgba(77, 77, 255, 0.4)"
-                transition="all 0.2s ease"
+                display="inline-flex"
+                alignItems="center"
+                gap={3}
+                bg="ink.white"
+                color="ink.black"
+                border="2px solid"
+                borderColor="ink.black"
+                boxShadow="brutal"
+                px={[5, 7]}
+                py={[3, 4]}
+                fontFamily="mono"
+                fontSize={["sm", "md"]}
+                fontWeight="700"
+                textTransform="uppercase"
+                letterSpacing="0.1em"
+                transition="all 0.12s ease-out"
                 _hover={{
-                  bg: "rgba(77, 77, 255, 0.12)",
-                  boxShadow: "brandGlow",
-                  borderColor: "brand.hover",
-                  transform: "translateY(-2px)",
+                  bg: "ink.black",
+                  color: "ink.white",
+                  transform: "translate(-3px, -3px)",
+                  boxShadow: "brutalLg",
                 }}
-                _active={{ transform: "translateY(0)" }}
+                _active={{
+                  transform: "translate(2px, 2px)",
+                  boxShadow: "none",
+                }}
               >
-                Back to home
-              </Button>
+                <Box as={RiArrowLeftLine} />
+                Back home
+              </Box>
             </MotionBox>
           </Flex>
         </Container>

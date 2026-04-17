@@ -1,34 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { IconButton } from '@chakra-ui/react';
-import { motion, useAnimation } from 'framer-motion';
-import { FaArrowUp } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { Box } from "@chakra-ui/react";
+import { motion, useAnimation } from "framer-motion";
+import { FaArrowUp } from "react-icons/fa";
 
-const MotionButton = motion(IconButton);
+const MotionBox = motion(Box);
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
 
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 400) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
+    const toggle = () => setIsVisible(window.pageYOffset > 400);
+    window.addEventListener("scroll", toggle, { passive: true });
+    return () => window.removeEventListener("scroll", toggle);
   }, []);
 
   useEffect(() => {
@@ -36,42 +20,51 @@ const ScrollToTop = () => {
       controls.start({
         opacity: 1,
         y: 0,
-        transition: {
-          type: 'spring',
-          stiffness: 260,
-          damping: 20,
-        },
+        transition: { duration: 0.2 },
       });
     } else {
-      controls.start({ opacity: 0, y: 20 });
+      controls.start({ opacity: 0, y: 16, transition: { duration: 0.15 } });
     }
   }, [isVisible, controls]);
 
   return (
-    <MotionButton
+    <MotionBox
+      as="button"
+      type="button"
       aria-label="Scroll to top"
-      icon={<FaArrowUp aria-hidden="true" />}
-      size="md"
-      bg="brand.primary"
-      color="white"
-      _hover={{ bg: 'brand.hover' }}
-      _active={{ bg: 'brand.hover' }}
-      borderRadius="full"
-      position="fixed"
-      bottom={['16px', '30px']}
-      right={['16px', '30px']}
-      zIndex={99}
-      minW="48px"
-      minH="48px"
-      boxShadow="lift"
-      onClick={scrollToTop}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       animate={controls}
-      initial={{ opacity: 0, y: 20 }}
-      whileHover={{ scale: 1.08 }}
-      whileTap={{ scale: 0.92 }}
-      style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
-    />
+      initial={{ opacity: 0, y: 16 }}
+      whileHover={{ x: -2, y: -2 }}
+      whileTap={{ x: 2, y: 2 }}
+      position="fixed"
+      bottom={["16px", "30px"]}
+      right={["16px", "30px"]}
+      zIndex={99}
+      w="48px"
+      h="48px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      bg="ink.black"
+      color="ink.white"
+      border="2px solid #000000"
+      boxShadow="brutal"
+      cursor="pointer"
+      style={{ pointerEvents: isVisible ? "auto" : "none" }}
+      _hover={{
+        bg: "ink.white",
+        color: "ink.black",
+        boxShadow: "brutalLg",
+      }}
+      _focusVisible={{
+        outline: "3px solid #000000",
+        outlineOffset: "2px",
+      }}
+    >
+      <Box as={FaArrowUp} aria-hidden="true" />
+    </MotionBox>
   );
 };
 
-export default ScrollToTop; 
+export default ScrollToTop;

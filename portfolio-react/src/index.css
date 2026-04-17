@@ -1,23 +1,46 @@
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background: #FFFFFF;
+  color: #000000;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+code, pre, .mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 :focus-visible {
-  outline: 2px solid #6a6aff;
+  outline: 3px solid #000000;
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 *:focus:not(:focus-visible) {
   outline: none;
+}
+
+::selection {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* Brutalism scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-left: 2px solid #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #262626;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -30,4 +53,3 @@ code {
     scroll-behavior: auto !important;
   }
 }
-

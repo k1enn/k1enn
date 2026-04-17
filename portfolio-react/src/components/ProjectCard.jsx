@@ -4,52 +4,79 @@ import {
   Image,
   Heading,
   Text,
-  Button,
   VStack,
   HStack,
-  Tag,
-  useBreakpointValue,
+  Flex,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { RiArrowRightLine, RiExternalLinkLine } from "react-icons/ri";
+import { RiArrowRightUpLine } from "react-icons/ri";
+
 const MotionBox = motion(Box);
 
-const ProjectCard = ({ project, direction }) => {
-  const animationDirection = direction === "left" ? -40 : 40;
-  const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
+const ProjectCard = ({ project, index = 0 }) => {
+  const number = String(index + 1).padStart(2, "0");
 
   return (
     <MotionBox
-      initial={{ opacity: 0, x: animationDirection }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.4 }}
       h="100%"
       role="group"
+      as="a"
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${project.title} — open on GitHub (new tab)`}
+      _focusVisible={{ outline: "none" }}
     >
       <Box
-        bg="bg.card"
-        backdropFilter="blur(10px)"
-        borderRadius="card"
-        overflow="hidden"
-        borderWidth="1px"
-        borderColor="rgba(255, 255, 255, 0.06)"
+        bg="ink.white"
+        border="2px solid"
+        borderColor="ink.black"
+        boxShadow="brutal"
         h="100%"
-        boxShadow="soft"
-        transition="transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
+        display="flex"
+        flexDirection="column"
+        transition="transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s ease-out, color 0.12s ease-out"
         _hover={{
-          transform: "translateY(-6px)",
-          boxShadow: "lift",
-          borderColor: "rgba(77, 77, 255, 0.35)",
+          transform: "translate(-4px, -4px)",
+          boxShadow: "brutalLg",
+          bg: "ink.black",
+          color: "ink.white",
         }}
-        _focusWithin={{
-          borderColor: "brand.hover",
-          boxShadow: "focus",
+        _groupFocus={{
+          boxShadow: "brutalLg",
         }}
-        position="relative"
+        sx={{
+          "&:hover .project-thumb": {
+            filter: "invert(1) grayscale(1) contrast(1.05)",
+          },
+          "&:hover .project-tag": {
+            borderColor: "#FFFFFF",
+            color: "#FFFFFF",
+          },
+          "&:hover .project-meta": {
+            borderColor: "#FFFFFF",
+          },
+          "&:hover .project-arrow": {
+            bg: "#FFFFFF",
+            color: "#000000",
+          },
+        }}
       >
-        <Box position="relative" width="100%" pt="56.25%" overflow="hidden">
+        <Box
+          position="relative"
+          width="100%"
+          pt="56.25%"
+          overflow="hidden"
+          borderBottom="2px solid"
+          borderColor="ink.black"
+          bg="ink.100"
+        >
           <Image
+            className="project-thumb"
             src={project.image}
             alt={project.title ? `${project.title} preview` : ""}
             loading="lazy"
@@ -59,66 +86,102 @@ const ProjectCard = ({ project, direction }) => {
             width="100%"
             height="100%"
             objectFit="cover"
-            transition="transform 0.5s ease"
-            _groupHover={{ transform: "scale(1.04)" }}
+            transition="filter 0.15s ease-out, transform 0.4s ease-out"
+            sx={{ filter: "grayscale(1) contrast(1.05)" }}
+            _groupHover={{ transform: "scale(1.03)" }}
           />
-        </Box>
-        <VStack spacing={3} align="flex-start" p={5}>
-          <Heading
-            as="h3"
-            fontSize={["xl", "2xl"]}
-            letterSpacing="-0.02em"
-            color="text.primary"
+          <Box
+            position="absolute"
+            top={0}
+            left={0}
+            className="project-meta"
+            bg="ink.white"
+            color="ink.black"
+            borderRight="2px solid"
+            borderBottom="2px solid"
+            borderColor="ink.black"
+            px={3}
+            py={1}
+            fontFamily="mono"
+            fontSize="xs"
+            fontWeight="700"
+            letterSpacing="0.08em"
           >
-            {project.title}
-          </Heading>
+            {number}
+          </Box>
+        </Box>
 
-          {project.tags && (
-            <HStack spacing={2} flexWrap="wrap" mt={1}>
+        <VStack spacing={3} align="stretch" p={[4, 5]} flex="1">
+          <Flex justify="space-between" align="flex-start" gap={3}>
+            <Heading
+              as="h3"
+              fontFamily="display"
+              fontSize={["xl", "2xl"]}
+              lineHeight="1"
+              letterSpacing="-0.02em"
+              textTransform="uppercase"
+              wordBreak="break-word"
+            >
+              {project.title}
+            </Heading>
+            <Flex
+              className="project-arrow"
+              w="40px"
+              h="40px"
+              minW="40px"
+              align="center"
+              justify="center"
+              border="2px solid currentColor"
+              transition="background 0.12s ease-out, color 0.12s ease-out"
+            >
+              <Box as={RiArrowRightUpLine} fontSize="22px" />
+            </Flex>
+          </Flex>
+
+          {project.tags && project.tags.length > 0 && (
+            <HStack spacing={2} flexWrap="wrap">
               {project.tags.map((tag, idx) => (
-                <Tag
+                <Text
                   key={idx}
-                  size="md"
-                  bg="rgba(77, 77, 255, 0.15)"
-                  color="brand.accent"
-                  borderRadius="full"
+                  className="project-tag"
+                  as="span"
+                  fontFamily="mono"
+                  fontSize="xs"
+                  fontWeight="500"
+                  textTransform="uppercase"
+                  letterSpacing="0.08em"
+                  border="2px solid"
+                  borderColor="currentColor"
+                  px={2}
+                  py={1}
                   mb={1}
                 >
                   {tag}
-                </Tag>
+                </Text>
               ))}
             </HStack>
           )}
 
-          <Text color="text.secondary" fontSize={["sm", "md"]}>
+          <Text fontSize={["sm", "md"]} lineHeight="1.5">
             {project.description}
           </Text>
-          <Button
-            variant="outline"
-            size={buttonSize}
-            as="a"
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.title} (opens in new tab)`}
-            rightIcon={<RiArrowRightLine aria-hidden="true" />}
-            leftIcon={<RiExternalLinkLine aria-hidden="true" />}
-            mt={2}
-            color="text.primary"
-            borderColor="rgba(255,255,255,0.15)"
-            cursor="pointer"
-            transition="all 0.2s ease"
-            _hover={{
-              transform: "translateY(-2px)",
-              boxShadow: "brandGlow",
-              color: "white",
-              bg: "brand.primary",
-              borderColor: "brand.primary",
-            }}
-            _active={{ transform: "translateY(0)" }}
-          >
-            View project
-          </Button>
+
+          {(project.year || project.stack) && (
+            <Flex
+              mt="auto"
+              pt={3}
+              borderTop="2px solid"
+              borderColor="currentColor"
+              justify="space-between"
+              fontFamily="mono"
+              fontSize="xs"
+              textTransform="uppercase"
+              letterSpacing="0.08em"
+            >
+              {project.year && <Text>{project.year}</Text>}
+              {project.stack && <Text>{project.stack}</Text>}
+            </Flex>
+          )}
         </VStack>
       </Box>
     </MotionBox>

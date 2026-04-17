@@ -1,13 +1,13 @@
-import React from 'react';
-import { Box, Heading, Text } from '@chakra-ui/react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
+import React from "react";
+import { Box, Heading, Text } from "@chakra-ui/react";
+import { motion, useReducedMotion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
 const Overlay = () => {
   const prefersReducedMotion = useReducedMotion();
-
   if (prefersReducedMotion) return null;
 
   return (
@@ -17,11 +17,13 @@ const Overlay = () => {
       left="0"
       width="100%"
       height="100%"
-      backgroundColor="bg.primary"
+      bg="ink.black"
+      color="ink.white"
       display="flex"
       flexDirection="column"
-      alignItems="center"
+      alignItems="flex-start"
       justifyContent="center"
+      px={["1.5rem", "3rem"]}
       zIndex="9999"
       aria-hidden="true"
       initial={{ opacity: 1 }}
@@ -29,22 +31,30 @@ const Overlay = () => {
       transition={{ duration: 2, times: [0, 0.2, 0.8, 1] }}
       style={{ pointerEvents: "none" }}
     >
+      <Text
+        fontFamily="mono"
+        fontSize={["xs", "sm"]}
+        mb={4}
+        letterSpacing="0.15em"
+        textTransform="uppercase"
+        color="ink.300"
+      >
+        // booting...
+      </Text>
       <MotionHeading
         as="span"
-        fontSize={["2.5rem", "3.5rem"]}
-        fontWeight="800"
-        textAlign="center"
-        bgGradient="linear(to-r, brand.primary, brand.accent)"
-        bgClip="text"
-        initial={{ scale: 0.92 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5 }}
+        fontFamily="display"
+        fontSize={["3rem", "5rem", "7rem"]}
+        lineHeight="0.9"
+        letterSpacing="-0.04em"
+        textTransform="uppercase"
+        initial={{ x: -20 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.4 }}
       >
-        <TypeAnimation sequence={["Hello there"]} speed={50} repeat={1} />
+        <TypeAnimation sequence={["Hello there."]} speed={50} repeat={0} cursor={true} />
       </MotionHeading>
-      <Text mt={4} fontSize="sm" color="text.muted">
-        Loading portfolio…
-      </Text>
+      <Box mt={6} h="6px" w="120px" bg="ink.white" />
     </MotionBox>
   );
 };

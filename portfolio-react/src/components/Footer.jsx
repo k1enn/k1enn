@@ -1,62 +1,53 @@
-import React from 'react';
-import { Box, Text, Container, Flex, Icon } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { FaHeart } from 'react-icons/fa';
-
-const MotionBox = motion(Box);
-const MotionText = motion(Text);
+import React from "react";
+import { Box, Text, Container, Flex, HStack } from "@chakra-ui/react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <Box 
-      as="footer" 
-      py={8} 
-      bg="bg.secondary" 
-      position="relative"
-      overflow="hidden"
-      _before={{
-        content: "''",
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '1px',
-        background: 'linear-gradient(90deg, transparent, var(--chakra-colors-brand-primary), transparent)',
-      }}
+    <Box
+      as="footer"
+      bg="ink.black"
+      color="ink.white"
+      borderTop="2px solid"
+      borderColor="ink.black"
+      py={[8, 10]}
+      px={["1.25rem", "2rem"]}
     >
-      <Container maxW="container.xl">
-        <Flex 
-          direction="column" 
-          align="center" 
-          justify="center"
-          textAlign="center"
+      <Container maxW="1280px" p={0}>
+        <Flex
+          direction={["column", null, "row"]}
+          align={["flex-start", null, "center"]}
+          justify="space-between"
+          gap={4}
         >
-          <MotionBox
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <MotionText 
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              fontSize="sm" 
-              color="text.secondary"
-              mb={2}
+          <HStack spacing={3}>
+            <Box w="14px" h="14px" bg="ink.white" />
+            <Text
+              fontFamily="display"
+              fontSize={["xl", "2xl"]}
+              textTransform="uppercase"
+              letterSpacing="-0.02em"
             >
-              Built with <Icon as={FaHeart} color="red.400" mx={1} /> using React & Chakra UI
-            </MotionText>
-            <Text fontSize="sm" color="text.secondary">
-              © {currentYear} Trung Kien. 
+              K1EN / TRUNG KIEN
             </Text>
-          </MotionBox>
+          </HStack>
+
+          <HStack spacing={6} fontFamily="mono" fontSize="xs" textTransform="uppercase" letterSpacing="0.1em">
+            <Text>© {currentYear}</Text>
+            <Text>Built with React</Text>
+            <Text>Hanoi, VN</Text>
+          </HStack>
         </Flex>
+
+        <Box mt={6} borderTop="2px solid" borderColor="ink.white" pt={4}>
+          <Text fontFamily="mono" fontSize="xs" color="ink.300" letterSpacing="0.08em">
+            // No frameworks harmed in the making of this site.
+          </Text>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default Footer; 
+export default Footer;
