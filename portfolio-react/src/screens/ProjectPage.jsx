@@ -1,104 +1,94 @@
-// Create this just in case my projects too long
 import React, { useEffect } from "react";
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  Heading,
-  Button,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Container, SimpleGrid, Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { RiArrowLeftLine } from "react-icons/ri";
 import ProjectCard from "../components/ProjectCard";
+import SectionHeading from "../components/section-heading";
 import projectsData from "../projects.json";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
+import Navbar from "../components/Navbar";
 
-const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 
 const ProjectPage = () => {
-  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <Box>
+    <Box bg="ink.white" color="ink.black" minH="100vh">
+      <Navbar />
       <ScrollToTop />
 
       <Box
-        pt="80px" // Account for fixed navbar
-        p={["3rem 1rem", "5rem 2rem"]}
-        position="relative"
-        bg="bg.primary"
-        minHeight="100vh"
+        as="main"
+        pt={["96px", "120px"]}
+        pb={["4rem", "6rem"]}
+        px={["1.25rem", "2rem"]}
       >
-        <Container maxW="container.lg">
-          <MotionHeading
-            as="h1"
-            fontSize={["2rem", "2.5rem"]}
-            mb="2.5rem"
-            textAlign="center"
-            bgGradient="linear(90deg, brand.primary, #9999ff)"
-            bgClip="text"
-            fontWeight="800"
-            position="relative"
-            display="inline-block"
-            _after={{
-              content: "''",
-              position: "absolute",
-              left: "20%",
-              transform: "translateX(-50%)",
-              bottom: "-10px",
-              width: "60px",
-              height: "3px",
-              background:
-                "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
-              borderRadius: "3px",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
+        <Container maxW="1280px" p={0}>
+          <SectionHeading as="h1" id="all-projects-heading">
             All Projects
-          </MotionHeading>
+          </SectionHeading>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mt={10}>
+          <Flex mb={8} flexWrap="wrap" gap={3}>
+            <Text
+              fontFamily="mono"
+              fontSize="sm"
+              textTransform="uppercase"
+              letterSpacing="0.1em"
+            >
+              Count: {String(projectsData.length).padStart(2, "0")}
+            </Text>
+          </Flex>
+
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[6, 8]}>
             {projectsData.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                direction={index % 2 === 0 ? "left" : "right"}
-              />
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </SimpleGrid>
 
-          <Flex justifyContent="center" mt={12}>
+          <Flex justify="center" mt={[10, 14]}>
             <MotionBox
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
-              <Button
+              <Box
                 as={Link}
                 to="/"
-                variant="ghost"
-                size="lg"
-                color="blue.400"
-                bg="transparent"
-                border="1px solid transparent"
-                transition="all 0.3s ease"
+                display="inline-flex"
+                alignItems="center"
+                gap={3}
+                bg="ink.white"
+                color="ink.black"
+                border="2px solid"
+                borderColor="ink.black"
+                boxShadow="brutal"
+                px={[5, 7]}
+                py={[3, 4]}
+                fontFamily="mono"
+                fontSize={["sm", "md"]}
+                fontWeight="700"
+                textTransform="uppercase"
+                letterSpacing="0.1em"
+                transition="all 0.12s ease-out"
                 _hover={{
-                  bg: "rgba(77, 77, 255, 0.1)",
-                  boxShadow: "0 0 15px 5px rgba(77, 77, 255, 0.3)",
-                  border: "1px solid rgba(77, 77, 255, 0.3)",
-                  transform: "translateY(-3px)",
+                  bg: "ink.black",
+                  color: "ink.white",
+                  transform: "translate(-3px, -3px)",
+                  boxShadow: "brutalLg",
+                }}
+                _active={{
+                  transform: "translate(2px, 2px)",
+                  boxShadow: "none",
                 }}
               >
-                Back to Home
-              </Button>
+                <Box as={RiArrowLeftLine} />
+                Back home
+              </Box>
             </MotionBox>
           </Flex>
         </Container>

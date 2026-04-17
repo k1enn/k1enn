@@ -1,118 +1,103 @@
 import React from "react";
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  Heading,
-  Button,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Container, SimpleGrid, Flex, Text, HStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { RiArrowRightLine } from "react-icons/ri";
 import ProjectCard from "./ProjectCard";
+import SectionHeading from "./section-heading";
 import projectsData from "../projects.json";
-import { TypeAnimation } from "react-type-animation";
 
-const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 
 const Projects = () => {
-  // Only show first 2 projects on homepage
-  const featuredProjects = projectsData.slice(0, 4);
+  const featured = projectsData.slice(0, 4);
+  const totalCount = projectsData.length;
 
   return (
     <Box
+      as="section"
       id="projects"
-      p={["3rem 1rem", "5rem 2rem"]}
-      position="relative"
-      bg="rgba(0, 0, 0, 0.02)"
+      aria-labelledby="projects-heading"
+      py={["4rem", "6rem"]}
+      px={["1.25rem", "2rem"]}
+      bg="ink.white"
+      borderTop="2px solid"
+      borderColor="ink.black"
     >
-      <Container maxW="container.lg">
-                <MotionHeading
-          as="h2"
-          fontSize={["2rem", "2.5rem"]}
-          mb="2.5rem"
-          textAlign="center"
-          bgGradient="linear(90deg, brand.primary, #9999ff)"
-          bgClip="text"
-          fontWeight="800"
-          position="relative"
-          display="inline-block"
-          _after={{
-            content: "''",
-            position: "absolute",
-            left: "35%",
-            transform: "translateX(-50%)",
-            bottom: "-10px",
-            width: "60px",
-            height: "3px",
-            background:
-              "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
-            borderRadius: "3px",
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+      <Container maxW="1280px" p={0}>
+        <SectionHeading id="projects-heading" index={3}>
           Projects
-        </MotionHeading>
+        </SectionHeading>
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mt={10}>
-          {featuredProjects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              direction={project.direction}
-            />
+        <Flex
+          justify="space-between"
+          align="center"
+          mb={8}
+          flexWrap="wrap"
+          gap={3}
+        >
+          <Text
+            fontFamily="mono"
+            fontSize="sm"
+            textTransform="uppercase"
+            letterSpacing="0.1em"
+          >
+            Showing {featured.length} of {totalCount}
+          </Text>
+          <HStack spacing={2}>
+            <Box w="10px" h="10px" bg="ink.black" />
+            <Text fontFamily="mono" fontSize="xs" textTransform="uppercase" letterSpacing="0.1em">
+              Selected Work
+            </Text>
+          </HStack>
+        </Flex>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[6, 8]}>
+          {featured.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </SimpleGrid>
 
-        <Flex justifyContent="center" mt={12}>
+        <Flex justify="center" mt={[10, 14]}>
           <MotionBox
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.4 }}
           >
-            <Button
+            <Box
               as={Link}
               to="/projects"
-              variant="ghost"
-              size="lg"
-              color="blue.400"
-              bg="transparent"
-              border="1px solid transparent"
-              transition="all 0.3s ease"
+              display="inline-flex"
+              alignItems="center"
+              gap={3}
+              bg="ink.black"
+              color="ink.white"
+              border="2px solid"
+              borderColor="ink.black"
+              boxShadow="brutal"
+              px={[5, 7]}
+              py={[3, 4]}
+              fontFamily="mono"
+              fontSize={["sm", "md"]}
+              fontWeight="700"
+              textTransform="uppercase"
+              letterSpacing="0.1em"
+              transition="all 0.12s ease-out"
               _hover={{
-                bg: "rgba(77, 77, 255, 0.1)",
-                boxShadow: "0 0 15px 5px rgba(77, 77, 255, 0.3)",
-                border: "1px solid rgba(77, 77, 255, 0.3)",
-                transform: "translateY(-3px)",
+                bg: "ink.white",
+                color: "ink.black",
+                transform: "translate(-3px, -3px)",
+                boxShadow: "brutalLg",
+              }}
+              _active={{
+                transform: "translate(2px, 2px)",
+                boxShadow: "none",
               }}
             >
-              <TypeAnimation
-                sequence={[
-                  "View All Projrcts ...",
-                  800,
-                  "VIew aLl Projects ...",
-                  600,
-                  "View All Projects ...",
-                  500,
-                  "VIewa alasl",
-                  400,
-                  "View All Projects ...",
-                  10000,
-                  "View All Projects ...",
-                  200,
-                  "View All Projects ... Wanna see more???",
-                  3000,
-                  "View All Projects ... Wanna see more???",
-                ]}
-                speed={30}
-                repeat={Infinity}
-              />
-            </Button>
+              View all projects
+              <Box as={RiArrowRightLine} />
+            </Box>
           </MotionBox>
         </Flex>
       </Container>

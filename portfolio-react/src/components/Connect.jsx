@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  HStack,
-  Link,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Box, SimpleGrid, Link, Container, Text, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
   FaLinkedin,
@@ -15,138 +9,127 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 import { SiCodeforces, SiLeetcode } from "react-icons/si";
-import { Container } from "@chakra-ui/react";
+import SectionHeading from "./section-heading";
+
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
+
+const SOCIAL_LINKS = [
+  { url: "https://linkedin.com/in/k1enn", icon: FaLinkedin, label: "LinkedIn", handle: "@k1enn" },
+  { url: "https://www.github.com/k1enn", icon: FaGithub, label: "GitHub", handle: "@k1enn" },
+  { url: "https://www.youtube.com/@iamk1en", icon: FaYoutube, label: "YouTube", handle: "@iamk1en" },
+  { url: "https://codeforces.com/profile/dinhtrungkien", icon: SiCodeforces, label: "Codeforces", handle: "dinhtrungkien" },
+  { url: "https://www.leetcode.com/iamk1en", icon: SiLeetcode, label: "LeetCode", handle: "iamk1en" },
+  { url: "https://discord.gg/Wk9rmt83v8", icon: FaDiscord, label: "Discord", handle: "k1en" },
+  { url: "https://www.facebook.com/imnotk1en", icon: FaFacebook, label: "Facebook", handle: "imnotk1en" },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+};
 
 const Connect = () => {
-  const iconSize = useBreakpointValue({ base: 24, md: 36, lg: 40 });
-
-  const socialLinks = [
-    {
-      url: "https://linkedin.com/in/k1enn",
-      icon: FaLinkedin,
-    },
-    {
-      url: "https://www.github.com/k1enn",
-      icon: FaGithub,
-    },
-    {
-      url: "https://www.youtube.com/@iamk1en",
-      icon: FaYoutube,
-    },
-    {
-      url: "https://codeforces.com/profile/dinhtrungkien",
-      icon: SiCodeforces,
-    },
-    {
-      url: "https://www.leetcode.com/iamk1en",
-      icon: SiLeetcode,
-    },
-    {
-      url: "https://discord.gg/Wk9rmt83v8",
-      icon: FaDiscord,
-    },
-    {
-      url: "https://www.facebook.com/imnotk1en",
-      icon: FaFacebook,
-    },
-  ];
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 0.4 } },
-  };
-
   return (
     <Box
+      as="section"
       id="connect"
-      p={["3rem 1rem", "5rem 2rem"]}
-      position="relative"
-      bg="rgba(0, 0, 0, 0.02)"
+      aria-labelledby="connect-heading"
+      py={["4rem", "6rem"]}
+      px={["1.25rem", "2rem"]}
+      bg="ink.white"
+      borderTop="2px solid"
+      borderColor="ink.black"
     >
-      <Container maxW="container.lg">
-        <MotionHeading
-          as="h2"
-          fontSize={["2rem", "2.5rem"]}
-          mb="2.5rem"
-          textAlign="center"
-          bgGradient="linear(90deg, brand.primary, #9999ff)"
-          bgClip="text"
-          fontWeight="800"
-          position="relative"
-          display="inline-block"
-          _after={{
-            content: "''",
-            position: "absolute",
-            left: "20%",
-            transform: "translateX(-50%)",
-            bottom: "-10px",
-            width: "60px",
-            height: "3px",
-            background:
-              "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
-            borderRadius: "3px",
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Connect with me
-        </MotionHeading>
-      </Container>
+      <Container maxW="1280px" p={0}>
+        <SectionHeading id="connect-heading" index={2}>
+          Connect
+        </SectionHeading>
 
-      <MotionBox
-        as={HStack}
-        spacing={[3, 4, 6]}
-        justify="center"
-        wrap="wrap"
-        mt={6}
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
-        {socialLinks.map((social, index) => (
-          <MotionBox
-            key={index}
-            as={Link}
-            href={social.url}
-            isExternal
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            w={["60px", "70px"]}
-            h={["60px", "70px"]}
-            borderRadius="50%"
-            bg="rgba(255, 255, 255, 0.1)"
-            color="text.primary"
-            position="relative"
-            transition="all 0.3s ease"
-            _hover={{
-              transform: "translateY(-3px) scale(1.20)",
-              boxShadow: "0 6px 30px rgba(79, 79, 241, 0.4)",
-              bg: "brand.primary",
-              color: "white",
-            }}
-            variants={item}
-          >
-            <Box as={social.icon} size={iconSize} />
-          </MotionBox>
-        ))}
-      </MotionBox>
+        <MotionBox
+          as={SimpleGrid}
+          columns={{ base: 2, sm: 3, md: 4 }}
+          spacing={0}
+          border="2px solid"
+          borderColor="ink.black"
+          bg="ink.white"
+          boxShadow="brutal"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          sx={{
+            "& > *": {
+              borderRight: "2px solid #000000",
+              borderBottom: "2px solid #000000",
+            },
+          }}
+        >
+          {SOCIAL_LINKS.map((social) => (
+            <MotionBox
+              key={social.label}
+              as={Link}
+              href={social.url}
+              isExternal
+              aria-label={`${social.label} — ${social.handle} (opens in new tab)`}
+              rel="noopener noreferrer"
+              variants={item}
+              display="flex"
+              flexDirection="column"
+              alignItems="flex-start"
+              justifyContent="space-between"
+              gap={3}
+              p={[4, 5]}
+              minH={["140px", "160px"]}
+              bg="ink.white"
+              color="ink.black"
+              transition="all 0.12s ease-out"
+              _hover={{
+                bg: "ink.black",
+                color: "ink.white",
+                textDecoration: "none",
+              }}
+              _focusVisible={{
+                outline: "none",
+                bg: "ink.black",
+                color: "ink.white",
+              }}
+            >
+              <Flex w="100%" justify="space-between" align="center">
+                <Box as={social.icon} fontSize={["28px", "32px"]} aria-hidden="true" />
+                <Text fontFamily="mono" fontSize="xs" letterSpacing="0.1em">↗</Text>
+              </Flex>
+              <Box>
+                <Text
+                  fontFamily="display"
+                  fontSize={["md", "lg"]}
+                  textTransform="uppercase"
+                  letterSpacing="-0.02em"
+                  lineHeight="1"
+                >
+                  {social.label}
+                </Text>
+                <Text
+                  fontFamily="mono"
+                  fontSize="xs"
+                  mt={1}
+                  textTransform="lowercase"
+                  letterSpacing="0.04em"
+                >
+                  {social.handle}
+                </Text>
+              </Box>
+            </MotionBox>
+          ))}
+        </MotionBox>
+      </Container>
     </Box>
   );
 };
