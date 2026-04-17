@@ -50,21 +50,26 @@ const ScrollToTop = () => {
   return (
     <MotionButton
       aria-label="Scroll to top"
-      icon={<FaArrowUp />}
+      icon={<FaArrowUp aria-hidden="true" />}
       size="md"
-      colorScheme="purple"
+      bg="brand.primary"
+      color="white"
+      _hover={{ bg: 'brand.hover' }}
+      _active={{ bg: 'brand.hover' }}
       borderRadius="full"
       position="fixed"
       bottom={['16px', '30px']}
       right={['16px', '30px']}
       zIndex={99}
-      boxShadow="0px 5px 15px rgba(0, 0, 0, 0.3)"
+      minW="48px"
+      minH="48px"
+      boxShadow="lift"
       onClick={scrollToTop}
       animate={controls}
       initial={{ opacity: 0, y: 20 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      display={isVisible ? 'flex' : 'none'}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
+      style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
     />
   );
 };

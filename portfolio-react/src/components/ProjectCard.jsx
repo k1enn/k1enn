@@ -11,41 +11,48 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { RiArrowRightLine } from "react-icons/ri";
+import { RiArrowRightLine, RiExternalLinkLine } from "react-icons/ri";
 const MotionBox = motion(Box);
 
 const ProjectCard = ({ project, direction }) => {
-  const animationDirection = direction === "left" ? -50 : 50;
+  const animationDirection = direction === "left" ? -40 : 40;
   const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
 
   return (
     <MotionBox
       initial={{ opacity: 0, x: animationDirection }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6 }}
       h="100%"
+      role="group"
     >
       <Box
-        bg="rgba(37, 37, 37, 0.7)"
+        bg="bg.card"
         backdropFilter="blur(10px)"
-        borderRadius="10px"
+        borderRadius="card"
         overflow="hidden"
         borderWidth="1px"
-        borderColor="rgba(255, 255, 255, 0.05)"
+        borderColor="rgba(255, 255, 255, 0.06)"
         h="100%"
-        boxShadow="0 5px 15px rgba(0, 0, 0, 0.2)"
-        transition="transform 0.3s ease, box-shadow 0.3s ease"
+        boxShadow="soft"
+        transition="transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
         _hover={{
-          transform: "translateY(-10px)",
-          boxShadow: "0 15px 30px rgba(0, 0, 0, 0.3)",
+          transform: "translateY(-6px)",
+          boxShadow: "lift",
+          borderColor: "rgba(77, 77, 255, 0.35)",
+        }}
+        _focusWithin={{
+          borderColor: "brand.hover",
+          boxShadow: "focus",
         }}
         position="relative"
       >
         <Box position="relative" width="100%" pt="56.25%" overflow="hidden">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={project.title ? `${project.title} preview` : ""}
+            loading="lazy"
             position="absolute"
             top="0"
             left="0"
@@ -53,7 +60,7 @@ const ProjectCard = ({ project, direction }) => {
             height="100%"
             objectFit="cover"
             transition="transform 0.5s ease"
-            _groupHover={{ transform: "scale(1.05)" }}
+            _groupHover={{ transform: "scale(1.04)" }}
           />
         </Box>
         <VStack spacing={3} align="flex-start" p={5}>
@@ -72,8 +79,9 @@ const ProjectCard = ({ project, direction }) => {
                 <Tag
                   key={idx}
                   size="md"
-                  colorScheme="dark-blue"
-                  variant="subtle"
+                  bg="rgba(77, 77, 255, 0.15)"
+                  color="brand.accent"
+                  borderRadius="full"
                   mb={1}
                 >
                   {tag}
@@ -91,16 +99,25 @@ const ProjectCard = ({ project, direction }) => {
             as="a"
             href={project.link}
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${project.title} (opens in new tab)`}
+            rightIcon={<RiArrowRightLine aria-hidden="true" />}
+            leftIcon={<RiExternalLinkLine aria-hidden="true" />}
             mt={2}
-            color="white.500"
+            color="text.primary"
+            borderColor="rgba(255,255,255,0.15)"
+            cursor="pointer"
+            transition="all 0.2s ease"
             _hover={{
-              transform: "translateY(-3px) scale(1.05)",
-              boxShadow: "0 6px 20px rgba(77, 77, 255, 0.4)",
-              color: "blue.600",
-              borderColor: "blue.600",
+              transform: "translateY(-2px)",
+              boxShadow: "brandGlow",
+              color: "white",
+              bg: "brand.primary",
+              borderColor: "brand.primary",
             }}
+            _active={{ transform: "translateY(0)" }}
           >
-            View Project <RiArrowRightLine ml={4} />
+            View project
           </Button>
         </VStack>
       </Box>

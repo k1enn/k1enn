@@ -1,32 +1,53 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  },
   fonts: {
-    body: "Inter, sans-serif",
-    heading: "Inter, sans-serif",
+    body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    heading: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   },
   colors: {
     brand: {
       primary: "#4d4dff",
       hover: "#6a6aff",
+      accent: "#9999ff",
     },
     bg: {
-      primary: "#121212",
-      secondary: "#1e1e1e",
-      card: "#252525",
-      hover: "#333333",
+      primary: "#0f0f14",
+      secondary: "#171720",
+      card: "#1f1f2a",
+      hover: "#2a2a38",
     },
     text: {
-      primary: "#f0f0f0",
-      secondary: "#b3b3b3",
+      primary: "#f5f5f7",
+      secondary: "#c2c2cc",
+      muted: "#8a8a99",
     },
+  },
+  radii: {
+    card: "12px",
+    button: "8px",
+  },
+  shadows: {
+    soft: "0 4px 12px rgba(0, 0, 0, 0.25)",
+    lift: "0 12px 28px rgba(0, 0, 0, 0.35)",
+    brandGlow: "0 8px 24px rgba(77, 77, 255, 0.35)",
+    focus: "0 0 0 3px rgba(106, 106, 255, 0.5)",
   },
   styles: {
     global: {
-      body: {
+      "html, body": {
         bg: "bg.primary",
         color: "text.primary",
         lineHeight: 1.6,
+        scrollBehavior: "smooth",
+      },
+      "::selection": {
+        bg: "brand.primary",
+        color: "white",
       },
       "::-webkit-scrollbar": {
         width: "8px",
@@ -45,6 +66,13 @@ const theme = extendTheme({
   },
   components: {
     Button: {
+      baseStyle: {
+        borderRadius: "button",
+        fontWeight: 600,
+        _focusVisible: {
+          boxShadow: "focus",
+        },
+      },
       variants: {
         custom: {
           bg: "brand.primary",
@@ -52,9 +80,12 @@ const theme = extendTheme({
           _hover: {
             bg: "brand.hover",
             transform: "translateY(-2px)",
-            boxShadow: "0 5px 15px rgba(77, 77, 255, 0.4)",
+            boxShadow: "brandGlow",
           },
-          transition: "all 0.3s ease",
+          _active: {
+            transform: "translateY(0)",
+          },
+          transition: "all 0.2s ease",
         },
       },
     },
@@ -64,17 +95,25 @@ const theme = extendTheme({
         letterSpacing: "-0.02em",
       },
     },
+    Link: {
+      baseStyle: {
+        _focusVisible: {
+          boxShadow: "focus",
+          borderRadius: "4px",
+        },
+      },
+    },
     Card: {
       baseStyle: {
         container: {
           backgroundColor: "bg.card",
-          borderRadius: "10px",
+          borderRadius: "card",
           overflow: "hidden",
           transition: "transform 0.3s ease, box-shadow 0.3s ease",
-          boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)",
+          boxShadow: "soft",
           _hover: {
-            transform: "translateY(-10px)",
-            boxShadow: "0 15px 30px rgba(0, 0, 0, 0.3)",
+            transform: "translateY(-6px)",
+            boxShadow: "lift",
           },
         },
       },
@@ -82,4 +121,4 @@ const theme = extendTheme({
   },
 });
 
-export default theme; 
+export default theme;

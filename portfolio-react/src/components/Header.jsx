@@ -47,13 +47,14 @@ const Header = () => {
     <Box
       id="header"
       as="header"
-      height="100vh"
+      role="banner"
+      minH={["100vh", "100dvh"]}
       display="flex"
       alignItems="center"
       justifyContent="center"
       bgColor="bg.primary"
       position="relative"
-      backgroundImage="linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"
+      backgroundImage="linear-gradient(rgba(15, 15, 20, 0.78), rgba(15, 15, 20, 0.92)), url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80')"
       backgroundSize="cover"
       backgroundPosition="center"
       _after={{
@@ -62,27 +63,32 @@ const Header = () => {
         bottom: 0,
         left: 0,
         width: "100%",
-        height: "150px",
+        height: "180px",
         background:
           "linear-gradient(to top, var(--chakra-colors-bg-primary), transparent)",
+        pointerEvents: "none",
       }}
     >
       <MotionBox
-        bg="rgba(18, 18, 18, 0.8)"
-        p={["2rem 1rem", "2rem"]}
-        m={["2rem 2rem", "0rem"]}
-        borderRadius="8px"
-        boxShadow="0 10px 30px rgba(0, 0, 0, 0.3)"
-        maxWidth="600px"
+        bg="rgba(15, 15, 20, 0.72)"
+        backdropFilter="blur(10px)"
+        border="1px solid"
+        borderColor="rgba(255,255,255,0.06)"
+        p={["2rem 1.25rem", "2.5rem"]}
+        m={["2rem 1.5rem", "0rem"]}
+        borderRadius="card"
+        boxShadow="lift"
+        maxWidth="620px"
         textAlign="center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <Heading
+          as="h1"
           fontSize={["2.5rem", "3.5rem"]}
           mb="1rem"
-          bgGradient="linear(90deg, brand.primary, #9999ff)"
+          bgGradient="linear(90deg, brand.primary, brand.accent)"
           bgClip="text"
         >
           <HoverAnimatedText text="I'm Trung Kien" delay={1} />
@@ -151,11 +157,26 @@ const Header = () => {
           h={8}
           color="text.primary"
           cursor="pointer"
+          role="button"
+          tabIndex={0}
+          aria-label="Scroll to next section"
           onClick={() => {
-            window.scrollTo({
-              top: window.innerHeight - 28,
-              behavior: "smooth",
-            });
+            const tech = document.getElementById("technology");
+            if (tech) {
+              tech.scrollIntoView({ behavior: "smooth", block: "start" });
+            } else {
+              window.scrollTo({
+                top: window.innerHeight - 28,
+                behavior: "smooth",
+              });
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              const tech = document.getElementById("technology");
+              if (tech) tech.scrollIntoView({ behavior: "smooth" });
+            }
           }}
         />
       </MotionBox>

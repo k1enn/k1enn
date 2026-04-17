@@ -63,21 +63,34 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <nav
+      className={`navbar ${scrolled ? "scrolled" : ""}`}
+      aria-label="Primary"
+    >
       <div className="navbar-container">
-        <NavLink to="/" className="navbar-logo">
+        <NavLink to="/" className="navbar-logo" aria-label="K1EN home">
           <span className="gradient-text">K1EN</span>
         </NavLink>
 
-        <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
-          <div className={`hamburger ${isOpen ? "active" : ""}`}>
+        <button
+          type="button"
+          className="menu-icon"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="primary-nav-menu"
+        >
+          <div className={`hamburger ${isOpen ? "active" : ""}`} aria-hidden="true">
             <span></span>
             <span></span>
             <span></span>
           </div>
-        </div>
+        </button>
 
-        <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
+        <ul
+          id="primary-nav-menu"
+          className={isOpen ? "nav-menu active" : "nav-menu"}
+        >
           <li className="nav-item">
             {/* Changed from NavLink to regular anchor to avoid conflict */}
             <a

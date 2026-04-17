@@ -12,12 +12,29 @@ import Navbar from "../components/Navbar";
 const HomePage = ({ showOverlay }) => {
   return (
     <Container maxW="100%" p="0" m="0" overflow="hidden">
+      <Box
+        as="a"
+        href="#header"
+        position="absolute"
+        left="-9999px"
+        top="8px"
+        bg="brand.primary"
+        color="white"
+        px={3}
+        py={2}
+        borderRadius="md"
+        zIndex={10000}
+        _focusVisible={{ left: "8px", outline: "none" }}
+      >
+        Skip to content
+      </Box>
+
       <Navbar />
 
       <Box display={["none", null, "block"]}>
         <Navigation />
       </Box>
-      <Box width="100%">
+      <Box as="main" width="100%">
         <ScrollToTop />
         {showOverlay && <Overlay />}
         <Header />

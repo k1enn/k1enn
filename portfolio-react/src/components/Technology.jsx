@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, Container, Flex, Text, Heading } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { Box, Container, Flex, Text } from "@chakra-ui/react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   SiDart,
   SiHtml5,
@@ -18,8 +18,8 @@ import {
 import { TbBrandCSharp } from "react-icons/tb";
 import { FaJava } from "react-icons/fa";
 import { DiMsqlServer } from "react-icons/di";
+import SectionHeading from "./section-heading";
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
 
 const Technology = () => {
   // Change this data if wanna update
@@ -49,6 +49,7 @@ const Technology = () => {
   const [scrollAmount, setScrollAmount] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
   const [scrollDirection, setScrollDirection] = useState(1);
+  const prefersReducedMotion = useReducedMotion();
 
   // Calculate scroll amount based on device width
   useEffect(() => {
@@ -106,7 +107,7 @@ const Technology = () => {
 
   // Auto-scroll effect
   useEffect(() => {
-    if (!autoScroll) return;
+    if (!autoScroll || prefersReducedMotion) return;
 
     let animationId;
     const autoScrollSpeed = 0.5; // pixels per frame - lower is slower
@@ -135,40 +136,18 @@ const Technology = () => {
     return () => {
       cancelAnimationFrame(animationId);
     };
-  }, [autoScroll, scrollDirection]);
+  }, [autoScroll, scrollDirection, prefersReducedMotion]);
 
   return (
-    <Box id="technology" p={["3rem 1rem", "5rem 2rem"]} position="relative">
+    <Box
+      as="section"
+      id="technology"
+      aria-labelledby="technology-heading"
+      p={["3rem 1rem", "5rem 2rem"]}
+      position="relative"
+    >
       <Container maxW="container.lg">
-        <MotionHeading
-          as="h2"
-          fontSize={["2rem", "2.5rem"]}
-          mb="2.5rem"
-          textAlign="center"
-          bgGradient="linear(90deg, brand.primary, #9999ff)"
-          bgClip="text"
-          fontWeight="800"
-          position="relative"
-          display="inline-block"
-          _after={{
-            content: "''",
-            position: "absolute",
-            left: "20%",
-            transform: "translateX(-50%)",
-            bottom: "-10px",
-            width: "60px",
-            height: "3px",
-            background:
-              "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
-            borderRadius: "3px",
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Technologies
-        </MotionHeading>
+        <SectionHeading id="technology-heading">Technologies</SectionHeading>
 
         <Flex position="relative" w="100%" align="center" mt={10}>
           {/* Auto-scrolling container */}
@@ -206,24 +185,30 @@ const Technology = () => {
                   flexDirection="column"
                   alignItems="center"
                   justifyContent="center"
-                  bg="rgba(18, 18, 18, 0.6)"
-                  borderRadius="lg"
+                  bg="bg.card"
+                  borderRadius="card"
+                  border="1px solid"
+                  borderColor="rgba(255,255,255,0.06)"
                   p={4}
                   height="150px"
+                  minW="130px"
                   _hover={{
                     transform: "translateY(-5px)",
+                    borderColor: "rgba(77, 77, 255, 0.35)",
+                    boxShadow: "soft",
                   }}
-                  transition="all 0.3s ease"
+                  transition="all 0.25s ease"
                 >
                   <Box
                     as={tech.icon}
                     size="50px"
                     color={tech.color}
                     mb={4}
-                    transition="transform 0.3s ease"
-                    _hover={{ transform: "scale(1.2)" }}
+                    aria-hidden="true"
+                    transition="transform 0.25s ease"
+                    _hover={{ transform: "scale(1.15)" }}
                   />
-                  <Text fontWeight="500" textAlign="center">
+                  <Text fontWeight="500" textAlign="center" color="text.primary">
                     {tech.name}
                   </Text>
                 </Flex>

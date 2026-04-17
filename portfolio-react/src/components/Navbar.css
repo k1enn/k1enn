@@ -11,7 +11,7 @@
   z-index: 999;
   transition: all 0.3s ease;
   box-sizing: border-box;
-  overflow-x: show; /* Prevent horizontal overflow */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .navbar.scrolled {
@@ -50,7 +50,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #4361ee, #9999ff);
+  background: linear-gradient(45deg, #4d4dff, #9999ff);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -78,11 +78,11 @@
 }
 
 .nav-link:hover {
-  color: #4361ee;
+  color: #6a6aff;
 }
 
 .nav-link.active {
-  color: #4361ee;
+  color: #6a6aff;
 }
 
 .nav-link.active::after {
@@ -92,7 +92,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #4361ee;
+  background: #6a6aff;
   transform-origin: left;
   animation: slideIn 0.3s forwards;
 }
@@ -105,6 +105,15 @@
 .menu-icon {
   display: none;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.menu-icon:focus-visible {
+  outline: 2px solid #6a6aff;
+  outline-offset: 2px;
 }
 
 .hamburger {

@@ -4,18 +4,19 @@ import {
   Box,
   Container,
   SimpleGrid,
-  Heading,
   Button,
   Flex,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { RiArrowLeftLine } from "react-icons/ri";
 import ProjectCard from "../components/ProjectCard";
+import SectionHeading from "../components/section-heading";
 import projectsData from "../projects.json";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
+import Navbar from "../components/Navbar";
 
-const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 
 const ProjectPage = () => {
@@ -26,44 +27,21 @@ const ProjectPage = () => {
 
   return (
     <Box>
+      <Navbar />
       <ScrollToTop />
 
       <Box
-        pt="80px" // Account for fixed navbar
+        as="main"
+        pt="80px"
         p={["3rem 1rem", "5rem 2rem"]}
         position="relative"
         bg="bg.primary"
         minHeight="100vh"
       >
         <Container maxW="container.lg">
-          <MotionHeading
-            as="h1"
-            fontSize={["2rem", "2.5rem"]}
-            mb="2.5rem"
-            textAlign="center"
-            bgGradient="linear(90deg, brand.primary, #9999ff)"
-            bgClip="text"
-            fontWeight="800"
-            position="relative"
-            display="inline-block"
-            _after={{
-              content: "''",
-              position: "absolute",
-              left: "20%",
-              transform: "translateX(-50%)",
-              bottom: "-10px",
-              width: "60px",
-              height: "3px",
-              background:
-                "linear-gradient(90deg, var(--chakra-colors-brand-primary), #9999ff)",
-              borderRadius: "3px",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
+          <SectionHeading as="h1" id="all-projects-heading">
             All Projects
-          </MotionHeading>
+          </SectionHeading>
 
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mt={10}>
             {projectsData.map((project, index) => (
@@ -79,25 +57,27 @@ const ProjectPage = () => {
             <MotionBox
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Button
                 as={Link}
                 to="/"
-                variant="ghost"
                 size="lg"
-                color="blue.400"
+                leftIcon={<RiArrowLeftLine aria-hidden="true" />}
+                color="text.primary"
                 bg="transparent"
-                border="1px solid transparent"
-                transition="all 0.3s ease"
+                border="1px solid"
+                borderColor="rgba(77, 77, 255, 0.4)"
+                transition="all 0.2s ease"
                 _hover={{
-                  bg: "rgba(77, 77, 255, 0.1)",
-                  boxShadow: "0 0 15px 5px rgba(77, 77, 255, 0.3)",
-                  border: "1px solid rgba(77, 77, 255, 0.3)",
-                  transform: "translateY(-3px)",
+                  bg: "rgba(77, 77, 255, 0.12)",
+                  boxShadow: "brandGlow",
+                  borderColor: "brand.hover",
+                  transform: "translateY(-2px)",
                 }}
+                _active={{ transform: "translateY(0)" }}
               >
-                Back to Home
+                Back to home
               </Button>
             </MotionBox>
           </Flex>
