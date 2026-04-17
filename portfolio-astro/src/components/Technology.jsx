@@ -12,6 +12,11 @@ import {
   SiReact,
   SiMongodb,
   SiFirebase,
+  SiCloudflare,
+  SiPostgresql,
+  SiNextdotjs,
+  SiNestjs,
+  SiAstro,
 } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
 import { FaJava, FaCss3Alt } from "react-icons/fa";
@@ -31,9 +36,14 @@ const TECHNOLOGIES = [
   { name: "NodeJS", icon: SiNodedotjs },
   { name: "Express", icon: SiExpress },
   { name: "ReactJS", icon: SiReact },
+  { name: "NextJS", icon: SiNextdotjs },
+  { name: "NestJS", icon: SiNestjs },
+  { name: "Astro", icon: SiAstro },
   { name: "MongoDB", icon: SiMongodb },
+  { name: "PostgreSQL", icon: SiPostgresql },
   { name: "SQL Server", icon: DiMsqlServer },
   { name: "Firebase", icon: SiFirebase },
+  { name: "Cloudflare", icon: SiCloudflare },
 ];
 
 export default function Technology() {
