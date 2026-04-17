@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.jsx";
+import Header from "../components/Header.jsx";
+import Technology from "../components/Technology.jsx";
+import ScrollToTop from "../components/ScrollToTop.jsx";
+import SectionHeading from "../components/SectionHeading.astro";
+import Connect from "../components/Connect.astro";
+import Projects from "../components/Projects.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Navbar client:load pathname="/" />
+  <main>
+    <ScrollToTop client:idle />
+    <Header client:load />
+
+    <section id="technology" aria-labelledby="technology-heading" class="technology-section">
+      <div class="container">
+        <SectionHeading id="technology-heading" index={1}>Stack</SectionHeading>
+        <Technology client:load />
+        <p class="technology-caption">// hover or tap to pause · auto-scrolls</p>
+      </div>
+    </section>
+
+    <Connect />
+    <Projects />
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  .technology-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background: var(--ink-100);
+    border-top: 2px solid #000;
+  }
+  .technology-caption {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #737373;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  @media (min-width: 768px) {
+    .technology-section { padding-top: 6rem; padding-bottom: 6rem; }
+  }
+</style>

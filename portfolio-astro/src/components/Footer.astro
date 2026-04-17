@@ -1,0 +1,81 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <span class="footer-dot" aria-hidden="true"></span>
+        <span class="footer-logo">K1EN / TRUNG KIEN</span>
+      </div>
+      <div class="footer-meta">
+        <span>© {currentYear}</span>
+        <span>Built with Astro</span>
+        <span>Hanoi, VN</span>
+      </div>
+    </div>
+    <div class="footer-tagline-wrap">
+      <p class="footer-tagline">// No frameworks harmed in the making of this site.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #000;
+    color: #FFF;
+    border-top: 2px solid #000;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .footer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: #FFF;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .footer-tagline-wrap {
+    margin-top: 1.5rem;
+    border-top: 2px solid #FFF;
+    padding-top: 1rem;
+  }
+  .footer-tagline {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #D4D4D4;
+    letter-spacing: 0.08em;
+  }
+  @media (min-width: 768px) {
+    .site-footer { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .footer-row { flex-direction: row; align-items: center; }
+    .footer-logo { font-size: 1.5rem; }
+  }
+</style>
