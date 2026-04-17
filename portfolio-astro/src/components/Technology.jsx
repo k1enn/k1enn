@@ -1,11 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import {
-  SiDart,
-  SiHtml5,
-  SiJavascript,
   SiFlutter,
-  SiAndroid,
   SiDotnet,
   SiNodedotjs,
   SiExpress,
@@ -23,14 +19,8 @@ import { FaJava, FaCss3Alt } from "react-icons/fa";
 import { DiMsqlServer } from "react-icons/di";
 
 const TECHNOLOGIES = [
-  { name: "C#", icon: TbBrandCSharp },
   { name: "Java", icon: FaJava },
-  { name: "Dart", icon: SiDart },
-  { name: "HTML", icon: SiHtml5 },
-  { name: "JavaScript", icon: SiJavascript },
-  { name: "CSS", icon: FaCss3Alt },
   { name: "Flutter", icon: SiFlutter },
-  { name: "Android", icon: SiAndroid },
   { name: ".NET Framework", icon: SiDotnet },
   { name: ".NET Core", icon: SiDotnet },
   { name: "NodeJS", icon: SiNodedotjs },
