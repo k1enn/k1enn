@@ -5,7 +5,6 @@ import {
   SiDart,
   SiHtml5,
   SiJavascript,
-  SiCss3,
   SiFlutter,
   SiAndroid,
   SiDotnet,
@@ -16,7 +15,7 @@ import {
   SiFirebase,
 } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
-import { FaJava } from "react-icons/fa";
+import { FaJava, FaCss3Alt } from "react-icons/fa";
 import { DiMsqlServer } from "react-icons/di";
 import SectionHeading from "./section-heading";
 
@@ -26,7 +25,7 @@ const TECHNOLOGIES = [
   { name: "Dart", icon: SiDart },
   { name: "HTML", icon: SiHtml5 },
   { name: "JavaScript", icon: SiJavascript },
-  { name: "CSS", icon: SiCss3 },
+  { name: "CSS", icon: FaCss3Alt },
   { name: "Flutter", icon: SiFlutter },
   { name: "Android", icon: SiAndroid },
   { name: ".NET Framework", icon: SiDotnet },
