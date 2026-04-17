@@ -1,10 +1,32 @@
 [
   {
+    "title": "QuanLyDesignerCTLD",
+    "description": "My first actual project, which I built for my company to manage clothing templates. It allows users to create, edit, and organize clothing templates with a user-friendly interface.",
+    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/barbie-thrift-tools.png",
+    "link": "https://quan-ly-designer-ctld-frontend-etb.pages.dev/",
+    "direction": "left",
+    "tags": ["Tool", "Frontend", "Responsive", "Native JS"]
+  },
+  {
+    "title": "QuanLySellerCTLD",
+    "description": "As team leader with four fresher developers, I built this project to help the company manage its money flow. It allows users to track and manage financial transactions, generate reports, and gain insights into the company's financial health.",
+    "link": "https://quan-ly-seller-ctld-frontend.pages.dev",
+    "direction": "right",
+    "tags": ["NextJS", "Cloudflare", "CI/CD", "Team Work"]
+  },
+  {
+    "title": "Hilu Learn",
+    "description": "Prototype of blockchain e-learning platform featuring course management, quizzes, XP/leveling system, project collaboration, and real-time leaderboards. Built with Next.js 15 and Supabase.",
+    "link": "https://hilu-learn-agy.pages.dev/",
+    "direction": "left",
+    "tags": ["NTF", "Blockchain", "Solana", "NextJS", "Supabase"]
+  },
+  {
     "title": "levents_shop",
     "description": "A full-stack e-commerce application built with MongoDB, Express.js, React.js, and Node.js featuring comprehensive admin functionality and order management.",
     "image": "https://github.com/k1enn/levents_shop/raw/master/frontend/public/images/user_view.png",
     "link": "https://github.com/k1enn/levents_shop",
-    "direction": "left",
+    "direction": "right",
     "tags": ["Fullstack", "E-Commerce"]
   },
   {
@@ -12,7 +34,7 @@
     "description": "A comprehensive Android application designed to help users learn English through interactive lessons, pronunciation practice, quizzes, and more.",
     "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/elsa-speak-clone.png",
     "link": "https://github.com/k1enn/elsa-speak-clone",
-    "direction": "right",
+    "direction": "left",
     "tags": ["Mobile", "Android", "Education", "AI Agent"]
   },
   {
@@ -36,7 +58,7 @@
     "description": "A web application for browsing, selecting, and ordering beverages from anywhere.",
     "image": "./images/web_1.png",
     "link": "https://github.com/k1enn/Ca-Phe-Boys",
-    "direction": "left",
+    "direction": "right",
     "tags": ["Web App", "E-Commerce", "Fullstack"]
   }
 ]
