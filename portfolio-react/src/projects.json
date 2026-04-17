@@ -2,7 +2,7 @@
   {
     "title": "QuanLyDesignerCTLD",
     "description": "My first actual project, which I built for my company to manage clothing templates. It allows users to create, edit, and organize clothing templates with a user-friendly interface.",
-    "image": "https://raw.githubusercontent.com/k1enn/k1enn/main/Portfolio/images/barbie-thrift-tools.png",
+    "image": "https://raw.githubusercontent.com/k1enn/k1enn/refs/heads/main/portfolio-react/public/images/quan-ly-designer.png",
     "link": "https://quan-ly-designer-ctld-frontend-etb.pages.dev/",
     "direction": "left",
     "tags": ["Tool", "Frontend", "Responsive", "Native JS"]
@@ -10,6 +10,7 @@
   {
     "title": "QuanLySellerCTLD",
     "description": "As team leader with four fresher developers, I built this project to help the company manage its money flow. It allows users to track and manage financial transactions, generate reports, and gain insights into the company's financial health.",
+    "image": "https://raw.githubusercontent.com/k1enn/k1enn/refs/heads/main/portfolio-react/public/images/quan-ly-seller.png",
     "link": "https://quan-ly-seller-ctld-frontend.pages.dev",
     "direction": "right",
     "tags": ["NextJS", "Cloudflare", "CI/CD", "Team Work"]
@@ -17,6 +18,7 @@
   {
     "title": "Hilu Learn",
     "description": "Prototype of blockchain e-learning platform featuring course management, quizzes, XP/leveling system, project collaboration, and real-time leaderboards. Built with Next.js 15 and Supabase.",
+    "image": "https://raw.githubusercontent.com/k1enn/k1enn/refs/heads/main/portfolio-react/public/images/hilu.png",
     "link": "https://hilu-learn-agy.pages.dev/",
     "direction": "left",
     "tags": ["NTF", "Blockchain", "Solana", "NextJS", "Supabase"]
