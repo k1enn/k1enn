@@ -50,9 +50,6 @@ const ProjectCard = ({ project, index = 0 }) => {
           boxShadow: "brutalLg",
         }}
         sx={{
-          "&:hover .project-thumb": {
-            filter: "invert(1) grayscale(1) contrast(1.05)",
-          },
           "&:hover .project-tag": {
             borderColor: "#FFFFFF",
             color: "#FFFFFF",
@@ -86,8 +83,7 @@ const ProjectCard = ({ project, index = 0 }) => {
             width="100%"
             height="100%"
             objectFit="cover"
-            transition="filter 0.15s ease-out, transform 0.4s ease-out"
-            sx={{ filter: "grayscale(1) contrast(1.05)" }}
+            transition="transform 0.4s ease-out"
             _groupHover={{ transform: "scale(1.03)" }}
           />
           <Box
